@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence-backed finding submission v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "findings",
+    "abstention_reason"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "abstention_reason": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "claim",
+        "kind",
+        "scope",
+        "definitions",
+        "assignments",
+        "statistics",
+        "evidence",
+        "limitations"
+      ],
+      "properties": {
+        "finding_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "group_difference",
+            "compound_association",
+            "temporal_change"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definitions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "condition_id",
+              "inclusion",
+              "exclusion"
+            ],
+            "properties": {
+              "condition_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "inclusion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "exclusion": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "assignments": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "condition_id",
+              "positive_doc_ids",
+              "negative_doc_ids",
+              "unknown_doc_ids"
+            ],
+            "properties": {
+              "condition_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "positive_doc_ids": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "negative_doc_ids": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "unknown_doc_ids": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "statistics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "doc_id",
+              "start",
+              "end",
+              "quote",
+              "role"
+            ],
+            "properties": {
+              "doc_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "quote": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "enum": [
+                  "supporting",
+                  "counterexample",
+                  "context"
+                ]
+              }
+            }
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      }
+    }
+  },
+  "description": "Evidence-backed findings. Full document partitions, exact quotations and arithmetic are checked by the evaluator."
+}
