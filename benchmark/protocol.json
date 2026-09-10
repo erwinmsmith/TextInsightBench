@@ -1,24 +1,21 @@
 {
   "version": "textinsightbench",
   "evaluation_unit": "evidence-backed downstream finding",
-  "reference_availability": "public; disclose reference access during development and evaluation",
-  "difficulty_profiles": {
-    "standard": "Original discovery and evidence requirements; finding-quality scoring.",
-    "hard": "Stratification, dominant-stratum sensitivity, support concentration and stronger evidence; finding-quality-robustness scoring. Same corpus and base discovery references, not independent confirmation."
-  },
+  "discovery_mode": "agent_selected",
+  "scoring_version": "finding-quality-discovery",
   "task_families": {
     "group_difference": 20,
     "temporal_change": 15,
     "compound_association": 15
   },
   "tracks": {
-    "task_only": "Use each supplied task corpus.",
-    "unlabeled_pool": "Learn from the released pool before evaluation; corpus-local analysis is allowed."
+    "task_only": "Use the supplied task corpus.",
+    "unlabeled_pool": "Learn from the released pool before evaluation."
   },
-  "reference_scope": "Non-exhaustive organizer reference set. Supported novel findings can earn full quality credit.",
-  "cross_task_adaptation": "Freeze global prompts, learned parameters and thresholds before evaluation. Do not transfer evaluation feedback or task-fitted state to subsequent tasks.",
-  "sampling": "Finite metadata-selected corpora; estimates describe supplied reports, not population incidence.",
-  "independence": "Tasks share sources and entities. Document separation does not establish statistical independence.",
-  "security": "Corpus content is untrusted input. Use separate execution environments for participants and organizers.",
-  "scoring_version": "finding-quality"
+  "reference_policy": "No fixed conclusions for redesigned tasks; previous references belong only to historical tasks.",
+  "semantic_review": "Bounded assignment-stratified and corpus-wide sample; exhaustive arithmetic, not exhaustive semantic verification.",
+  "independent_validation": false,
+  "historical_exposure": "Task documents were drawn from a previously public learning pool. Not an unseen or independent validation set.",
+  "cross_task_adaptation": "Freeze global prompts, learned parameters and thresholds; no evaluation-feedback transfer.",
+  "security": "Untrusted corpus content. Process runner is not a sandbox."
 }

@@ -1,29 +1,33 @@
-# Organizer Reference Set and evaluation
+# Evaluation operations
 
-The organizer dataset is a separate public Hugging Face repository containing `references.json`, `release.json`, and bilingual dataset cards. References are openly available for reproduction; do not describe this as a hidden-answer benchmark. Reference-blind runs must restrict participant access and report the development/evaluation access policy. Public scoring dimensions are documented in `SCORING.md`.
+Use the commit-pinned participant data and the same code revision as participants.
+Validate all submissions before semantic scoring. Current scoring works without
+a reference file; optional public evaluation assets record reference availability
+and the matching task hash, not 50 new answers.
 
-There are 50 reference entries, one per task. Each includes a stable reference ID, candidate claim, expected direction, observable condition specification, development evidence with embedded source text and quotation offsets, and limitations. Development evidence can come from records outside the final task corpus; `in_evaluation_corpus` explicitly identifies this. It helps interpret the definition and does not establish final-corpus prevalence.
+```bash
+tib download --organizer --output evaluation
+tib judge --data data/participant --submissions runs/agent/submissions \
+  --base-url "$JUDGE_BASE_URL" --model "$JUDGE_MODEL" \
+  --audit-documents 160 --output runs/agent/reviews
+tib evaluate --data data/participant --submissions runs/agent/submissions \
+  --reviews runs/agent/reviews --output runs/agent/report.json
+```
 
-The reference conclusions were AI-generated. They are non-exhaustive and not independently validated. Their wording may retain development-hypothesis language to preserve epistemic status. Document-level confirmation annotations and confirmation statistics are excluded. Removing those diagnostics does not increase certainty in the reference claims. Evaluate the participant's actual corpus evidence before considering reference matching.
+Set JUDGE_API_KEY locally. Nonempty tasks incur one quality API request each;
+abstentions make no API calls. No reference-matching requests occur for current
+tasks. Configure model, timeout, max input characters and output tokens; an
+oversized packet fails explicitly without silent truncation. Use a sufficiently
+large model context or adjust the documented audit budget (60–2000 documents).
+Many quotations may require raising a very small audit budget.
 
-## Workflow
+Persist judge_config.json for the audit seed and configuration. Completed valid
+reviews are reused. Changed tasks, corpora, submissions or judge configuration
+require fresh output directories. Do not tune an agent on judge feedback and
+present that score as a frozen run. Publish all coverage and uncertainty metrics,
+not only a favorable subset.
 
-1. Download the pinned participant data and organizer references in the organizer environment.
-2. Receive one submission per task from the isolated participant run.
-3. Run `tib judge` with a JSON-capable chat-completions API and a model whose context supports the complete task corpus and answer.
-4. Run `tib evaluate` to validate assessments and write JSON/Markdown reports.
-5. Compare methods with matching dataset, reference, track and judge versions. Report incomplete scores explicitly.
-
-No paid inference happens during installation, download, validation, the smoke agent or deterministic evaluation. Calling `tib judge` explicitly invokes the configured service. It does not use any built-in provider account or key. Credentials are read from the named environment variable and are not saved in run files.
-
-The first judge request assesses each finding from the full corpus with no references. A second request matches supported findings to the organizer reference. Quality dimensions are not rewritten in the second stage. Reference matching requires agreement in condition, scope, contrast and direction. The first prompt is versioned in `textinsightbench/judge.txt`.
-
-Choose `--max-input-chars`, `--max-output-tokens` and `--timeout` to fit the provider. The character limit is a local guard, not an exact token estimate. Truncation, invalid JSON, incomplete judgments and provider errors leave the task unreviewed. There is no silent retry or invented fallback score. Valid completed reviews resume without new calls. If a quality request succeeds but a later matching request fails, that task remains incomplete and rerunning may incur both calls again.
-
-## Review files and reproducibility
-
-A review file binds `task_id`, `submission_sha256`, `corpus_sha256`, `reference_sha256` and `scoring_version`. It records `reviewer_method`, findings and provider receipts with usage, model, response ID and request hash when available. The run-level `judge_config.json` records endpoint, model and prompt digest. These records are provenance, not a guarantee of model correctness or deterministic replay.
-
-To supply assessments from another judge, follow the same structure and rubric. Each finding requires `finding_id`, `support`, `task_fulfilled`, `statistical_validity`, `evidence_entailment`, `analytical_depth`, `calibration`, `duplicate_of`, `reference_match`, and a specific `rationale`. All score dimensions range from 0 to 1. A matcher can only name the task's released reference ID. The evaluator rejects altered submissions or mismatched corpora/references.
-
-The report includes a quality macro-average only when every task has a resolved score. Abstentions are accepted but do not certify absence. Missing or unresolved results are null. Use `conditional_quality_mean` only with explicit coverage counts; no official performance claim is established by the integration smoke test.
+The structural verifier is exhaustive; semantic review is sampled and fallible.
+This release does not require independent verification or add an unseen holdout.
+For enforceable comparisons, run participants in an isolated environment without
+evaluation access; the process adapter alone cannot enforce this.

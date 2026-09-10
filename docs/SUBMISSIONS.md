@@ -10,7 +10,7 @@ Write one UTF-8 JSON file per task, named `<task_id>.json`. The agent process pr
 }
 ```
 
-A nonempty answer contains up to five findings. Every finding has:
+A nonempty answer contains up to three findings. Every finding has:
 
 | Field | Required content |
 |---|---|
@@ -18,13 +18,29 @@ A nonempty answer contains up to five findings. Every finding has:
 | `claim` | Specific downstream conclusion, including direction and scope |
 | `kind` | Exactly the task's kind |
 | `scope` | Corpus, group, time and entity scope |
+| `population` | Object with `filters`: zero to three conjunctive metadata rules |
+| `comparison` | Agent-selected groups/date boundary, or null for association |
 | `definitions` | One observable condition for group/time tasks; two for association tasks. Each has `condition_id`, `inclusion`, `exclusion` |
 | `assignments` | One complete document partition per condition: `condition_id`, `positive_doc_ids`, `negative_doc_ids`, `unknown_doc_ids` |
 | `statistics` | Exactly the recomputed fields below |
 | `evidence` | Original quotation records: `doc_id`, `start`, `end`, `quote`, `role` (`supporting`, `counterexample`, `context`) |
 | `limitations` | Nonempty list describing uncertainty, confounding and inference limits |
 
-At least one supporting quotation is required. Every document belongs to exactly one state per condition. Positive means the stated report is present; negative means it is not reported under the definition; unknown preserves unresolved judgments. Quotations refer to the `text` field. Python `text[start:end]` must equal `quote`, using Unicode characters, not UTF-8 bytes or JavaScript UTF-16 code units. Do not normalize or edit evidence text before computing offsets.
+At least three distinct supporting documents and a known negative/discordant counterexample (if assigned cases exist) are required, with at most 15 spans per finding. Every selected-population document belongs to exactly one state per condition. Positive means the stated report is present; negative means it is not reported under the definition; unknown preserves unresolved judgments. Quotations refer to the `text` field. Python `text[start:end]` must equal `quote`, using Unicode characters, not UTF-8 bytes or JavaScript UTF-16 code units. Do not normalize or edit evidence text before computing offsets.
+
+Population example: `{"filters":[{"field":"rating","op":"gte","value":2}]}`.
+Use `{"filters":[]}` for all documents. Allowed fields are listed in each task;
+operators are eq, in, gte and lte. An in list has 1–20 scalar values. Missing
+metadata never matches a filter. Document IDs, text and post-hoc condition labels
+cannot filter the population. Explain scope choices in scope and limitations.
+
+Group example: `{"field":"rating","groups":[[1,2],[4,5]]}`. Each group has
+1–20 distinct values, and the groups must be disjoint. This example is a syntax
+illustration, not a sufficient research finding. Group values omitted from both
+arms remain in the selected population and require assignments; statistics
+report their exclusion. Temporal example:
+`{"field":"timestamp","cutoff":"2023-06-01"}`. Compound association uses null.
+Minimum population and arm sizes are specified in each task.
 
 Use the implementation to compute statistics from your assignments:
 
@@ -39,4 +55,9 @@ Group order follows `comparison.groups`; for time tasks, group 0 is before the c
 
 For association tasks, required statistics are `known_joint_n`, `unknown_joint_n`, `n11`, `n10`, `n01`, `n00`, `p_b_given_a`, `p_b_given_not_a`, `conditional_difference_pp`, `lift`. Condition A is the first definition and B the second. Joint cells count documents with known judgments for both conditions; unknowns are counted separately. Zero denominators produce JSON `null`, never NaN or infinity. Additional unsupported statistics are not accepted by this contract.
 
-The schema is bundled in `textinsightbench/output.schema.json` and the dataset root. Full working synthetic examples appear in `tests/test_evaluation.py`; they are integration fixtures rather than answers to released tasks.
+Current findings also require corpus_total_n, population_total_n,
+population_coverage and all robustness_* fields returned by expected. Pass the
+entire task corpus to expected; it applies the declared population itself. Do not
+pre-filter twice. See [audit formulas](DIFFICULTY.md). The schema is bundled in
+textinsightbench/output.schema.json and the dataset root. Synthetic discovery
+fixtures appear in tests/test_discovery.py; they are not released-task answers.

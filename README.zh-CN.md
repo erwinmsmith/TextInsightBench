@@ -2,22 +2,23 @@
 
 [English](README.md) | **简体中文**
 
+TextInsightBench 面向自然语言数据挖掘 Agent，共 **50 道开放探索任务、435,000 篇任务文本、944,468 篇无标签学习文本**。每题 5,000 或 10,000 篇文本，最多提交 3 个不重复的发现。题目给出研究目标，不指定要发现的文本现象、比较组或时间切点；任何分析方法均可使用。
 
-TextInsightBench 用于评估 Agent 从自然语言语料中挖掘具体、有证据支持的发现。任务涵盖群组差异、时间变化和复合关联，要求量化结论、检查反例并解释不确定性。
+## 数据与仓库
 
-当前 Benchmark 包含：包含 **50 道任务、24,504 篇评测文本、1,379,468 篇可选无监督学习文本**。每题最多提交 5 个发现，也可说明理由后弃答。任务和主要文档以英文为主，原始语料保持原文。
+代码与使用说明在 [GitHub](https://github.com/erwinmsmith/TextInsightBench)，语料与题目在 [参与者数据集](https://huggingface.co/datasets/CodeSoulco/TextInsightBench)，评分协议与参考可用性说明在 [测评资源](https://huggingface.co/datasets/CodeSoulco/TextInsightBench-Evaluation)。三个仓库均公开，名称始终为 TextInsightBench，使用提交哈希标识精确快照。
 
-## 资源组成
+| 来源 | 任务数 | 任务文本 | 无标签学习文本 |
+|---|---:|---:|---:|
+| Amazon Beauty | 13 | 130,000 | 330,885 |
+| App Reviews | 13 | 65,000 | 1,660 |
+| CFPB | 12 | 120,000 | 483,788 |
+| NHTSA | 12 | 120,000 | 128,135 |
+| 合计 | 50 | 435,000 | 944,468 |
 
-| 资源 | 地址 | 内容 |
-|---|---|---|
-| 代码与使用说明 | [erwinmsmith/TextInsightBench](https://github.com/erwinmsmith/TextInsightBench) | 批量运行、验证、测评、题目目录、评分规则 |
-| 参与者数据 | [CodeSoulco/TextInsightBench](https://huggingface.co/datasets/CodeSoulco/TextInsightBench) | 无监督文本池、50 份任务语料、格式和校验清单 |
-| 组织者参考集 | [CodeSoulco/TextInsightBench-Evaluation](https://huggingface.co/datasets/CodeSoulco/TextInsightBench-Evaluation) | 50 个参考结论、定义和原文背景，公开的测评参考 |
+任务包括 20 道群体差异、15 道时间变化、15 道复合关联。Agent 必须探索语料、自选分析范围、定义可观察现象，并对选定范围内所有文本给出正例、负例或未知判断，不能只挑几段引文推断总体比例。还需要解释反例、元数据构成、未知判断和结论适用边界。
 
-三个仓库均公开，包括组织者参考结论。这是开放参考测评，不是隐藏答案测试。结果须说明开发或测评时是否访问过参考；若采用参考盲测，应隔离参与者执行环境并限制参考访问，但公开本身仍带来污染风险。运行器不提供安全沙箱。
-
-## 快速开始
+## 运行
 
 ```bash
 git clone https://github.com/erwinmsmith/TextInsightBench.git
@@ -25,71 +26,36 @@ cd TextInsightBench
 python -m venv .venv
 source .venv/bin/activate
 pip install -e '.[data]'
-hf auth login
-tib download --output data/participant --with-learning
-tib verify --data data/participant --with-learning
-tib run --data data/participant --command 'python examples/abstain_agent.py' \
-  --output runs/smoke/submissions
-```
-
-示例 Agent 会对 50 题全部弃答，用于检查接口，不调用模型，也不代表基线能力。去掉下载参数 `--with-learning` 可只下载题目语料。运行时添加 `--limit 1` 可先测试一道题。
-
-## 接入自己的 Agent
-
-建议用增强难度：在 `run`、`validate`、`judge`、`evaluate` 中统一添加 `--difficulty hard`，并使用新的输出目录。50 题均增加分层对照、去除最大分层后的敏感性、支持集中度和更严格的反例证据要求；评分降低基础完成分，提高实质发现与稳健性分析的权重。普通模式保留兼容，两种分数不能直接比较。完整定义和公式见 [难度协议](docs/DIFFICULTY.md)。
-
-Agent 进程从标准输入读取一个 JSON，包含 `task`、完整 `documents` 和可选 `learning_directory`，向标准输出写入一份提交 JSON，日志写入标准错误。
-
-```bash
+tib download --output data/participant
+tib verify --data data/participant
 tib run --data data/participant --command 'python my_agent.py' \
-  --track unlabeled_pool --timeout 1800 --output runs/my-agent/submissions
+  --timeout 3600 --output runs/my-agent/submissions
 ```
 
-`task_only` 只使用当前任务语料；`unlabeled_pool` 允许提前利用无监督文本池学习。评测前冻结全局提示词、参数和阈值；评测中可分析当前任务语料，但不可将评测反馈或当前题拟合状态带入后续题目。相同配置重新运行时，会验证并复用已成功生成的提交。
+默认即完整探索挑战，不需要 difficulty 参数。学习赛道下载时加 `--with-learning`，运行时加 `--track unlabeled_pool`。示例 `examples/abstain_agent.py` 仅用于接口测试，不代表挖掘效果。
 
-提交包括结论、可观察条件定义、全部文档的 positive/negative/unknown 划分、统计值、精确原文引用以及局限。详见 [提交格式](docs/SUBMISSIONS.md) 和 [Agent 协议](docs/AGENT_PROTOCOL.md)。
+Agent 从标准输入接收任务和本地压缩 JSONL 文件路径，自行读取、检索、索引和分析；向标准输出返回 JSON，日志输出到标准错误。详见英文 [接口](docs/AGENT_PROTOCOL.md) 与 [提交格式](docs/SUBMISSIONS.md)。
 
-## 测评流程
+## 测评与分数
 
-```bash
-tib validate --data data/participant \
-  --submission runs/my-agent/submissions/amazon_beauty_group_difference_hair_tools_midrating.json
-
-# 以下在组织者的独立环境中执行
-tib download --organizer --output evaluation
-tib evaluate --data data/participant --submissions runs/smoke/submissions \
-  --references evaluation/references.json --output runs/smoke/report.json
-```
-
-上述示例生成 JSON 和 Markdown 报告，显示 50 题有效弃答、参考覆盖率为零、发现质量为 null。程序不会给未判定的答案生成虚构分数。
-
-对于有实质发现的答案，在环境中设置 `JUDGE_API_KEY`、`JUDGE_BASE_URL` 和 `JUDGE_MODEL`，使用支持 JSON 输出的 chat-completions 服务：
+本地验证器全量重算选定范围内的分母、统计、缺失边界、分层对比及集中度，核对完整文档划分和原文引用。语义评分使用配置的模型服务，会产生 API 费用：
 
 ```bash
 tib judge --data data/participant --submissions runs/my-agent/submissions \
-  --references evaluation/references.json --output runs/my-agent/reviews \
-  --base-url "$JUDGE_BASE_URL" --model "$JUDGE_MODEL"
+  --base-url "$JUDGE_BASE_URL" --model "$JUDGE_MODEL" \
+  --audit-documents 160 --output runs/my-agent/reviews
 tib evaluate --data data/participant --submissions runs/my-agent/submissions \
-  --references evaluation/references.json --reviews runs/my-agent/reviews \
-  --output runs/my-agent/report.json
+  --reviews runs/my-agent/reviews --output runs/my-agent/report.json
 ```
 
-`judge` 会产生所选服务的 API 费用。每份非空答案先根据完整任务语料评分，有得到支持的发现时，再调用一次参考匹配。第一阶段不提供参考答案。模型需要足够长的上下文；超限会明确失败，不截断材料。已完成的有效评审可以复用。
+密钥通过本地环境变量 `JUDGE_API_KEY` 提供。评审按提交状态分层抽样、补充全语料抽样，并检查引文。**算术检查是全量的，语义检查是抽样的**，不是全量语义确认，也不增加独立验证阶段。
 
-## 如何理解分数
+发现得分为 `支持系数 × (15 + 25S + 20E + 30D + 10C)`，分别关注统计有效性、证据支持、实质分析深度、校准。未完成任务或重复发现记零；证据不足保留未决。必须同时报告有效率、已评分覆盖、弃答、缺失和无效数量，不能用少数已评分任务的均分代表全量成绩。
 
-发现质量满分 100：任务满足 35 分、统计有效性 25 分、证据支持 20 分、分析深度 10 分、校准与局限 10 分，再乘以支持程度系数。每题按所提交发现的质量取平均。参考覆盖率单独报告，有充分证据的新发现即使未匹配参考，也可以得到完整质量分。
+## 参考答案状态
 
-弃答、缺失、无效答案和未完成语义评审均会单独记录。只有 50 题都有可用质量分时，才给出完整宏平均；条件均分会明确标为诊断值。详见 [评分规则](docs/SCORING.md) 和 [组织者使用说明](docs/ORGANIZER.md)。
+本次改变了题目含义，**没有把旧 50 条参考结论冒充成新题的 ground truth**。旧结论保留在历史提交中，当前测评资源明确记载固定参考结论为 0。新题按语料证据与公开评分规范评价，参考覆盖率不可用，而不是 0 分。这不是已经完成了 50 条新标注答案的声明。
 
-参考结论由 AI 生成，未经独立事实验证。当前版本不包含、不使用文档级确认标注。它提供非穷尽的参考发现，发现质量仍由原文证据决定。
+不增加独立验证集。新任务文本来自此前公开的学习池，不能声称未见；当前任务与剩余学习池文档不重叠，但来源和实体可共享，任务并非统计独立。尚未运行真实 Agent 对照实验，因此不宣称已实证证明某个难度水平。旧成绩不能与当前任务直接比较。
 
-## 数据与复现
-
-无监督池有 278 个 Parquet 分片，字段为 `doc_id`、`source`、`text`、`title`。与评测文本及参考构建文本核对后，在文档 ID、归一化文本和保守模板规则下均未发现重叠。不同任务仍可能共享实体或来源，不构成统计独立样本。
-
-`benchmark/data.lock.json` 固定 Hugging Face 的提交版本，下载后核对 SHA-256。任务 ID 使用描述性名称；提交哈希标识具体快照。数据来源、规模与使用条件见 [数据说明](docs/DATA.md) 和 [来源说明](docs/SOURCES.md)。
-
-```bash
-python -m unittest discover -s tests -v
-```
+详见 [挑战设计](docs/DIFFICULTY.md)、[评分](docs/SCORING.md)、[数据](docs/DATA.md)、[来源与条款](docs/SOURCES.md)。正文英文为主，原始文本保持不变。
