@@ -1,0 +1,1215 @@
+[
+  {
+    "task_id": "amazon_beauty_group_difference_hair_tools_midrating_v5",
+    "source": "amazon_beauty",
+    "kind": "group_difference",
+    "scope_name": "hair tools and brushes",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "rating_4_5",
+        "rating_3"
+      ]
+    },
+    "question": "Within hair tools and brushes, investigate substantive differences in reported experiences between rating_4_5 and rating_3. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 373,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_group_difference_hair_tools_midrating_v5.jsonl.gz",
+    "corpus_sha256": "7bf3a1c9537c78e0b6cf1beee22908d19fcef3ed815f79857a8df0494adb9910",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "hair_tools"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_group_difference_hair_tools_v4",
+    "source": "amazon_beauty",
+    "kind": "group_difference",
+    "scope_name": "hair tools and brushes",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "rating_4_5",
+        "rating_1_2"
+      ]
+    },
+    "question": "Within hair tools and brushes, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_group_difference_hair_tools_v4.jsonl.gz",
+    "corpus_sha256": "0603e2eb2807b292830d973eb385dcd0ba95a390af6f5dd0f7415efe73732db3",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "hair_tools"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_group_difference_nails_v4",
+    "source": "amazon_beauty",
+    "kind": "group_difference",
+    "scope_name": "nail-care products",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "rating_4_5",
+        "rating_1_2"
+      ]
+    },
+    "question": "Within nail-care products, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_group_difference_nails_v4.jsonl.gz",
+    "corpus_sha256": "04ffe62594b4d0abe15710fd717ebeefac4e45e6f445bde27bfb1059bc8293ae",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "nails"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_group_difference_skin_v4",
+    "source": "amazon_beauty",
+    "kind": "group_difference",
+    "scope_name": "skin-care and cleansing products",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "rating_4_5",
+        "rating_1_2"
+      ]
+    },
+    "question": "Within skin-care and cleansing products, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_group_difference_skin_v4.jsonl.gz",
+    "corpus_sha256": "e1443c24e6fce8201361c340d320ea4042617f4382ab253a9a8d207c4d45d029",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "skin"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_group_difference_makeup_v4",
+    "source": "amazon_beauty",
+    "kind": "group_difference",
+    "scope_name": "makeup products",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "rating_4_5",
+        "rating_1_2"
+      ]
+    },
+    "question": "Within makeup products, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_group_difference_makeup_v4.jsonl.gz",
+    "corpus_sha256": "25e5a34896f27ed3a86e054808c1ac3823d24dc0815f915e37d2c358a94932e5",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "makeup"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_temporal_change_grooming_v4",
+    "source": "amazon_beauty",
+    "kind": "temporal_change",
+    "scope_name": "shaving and grooming products",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2019-03-04",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within shaving and grooming products, investigate changes in reported experiences before versus on/after 2019-03-04. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_grooming_v4.jsonl.gz",
+    "corpus_sha256": "fc74044946083aeaa6d18a49b2174dafeb55ac72d264db09698c778db3226b9c",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "grooming"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_temporal_change_fragrance_v4",
+    "source": "amazon_beauty",
+    "kind": "temporal_change",
+    "scope_name": "fragrances",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2020-04-03",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within fragrances, investigate changes in reported experiences before versus on/after 2020-04-03. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 332,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_fragrance_v4.jsonl.gz",
+    "corpus_sha256": "f0b8ef66e8475ee334f68cef89c225aba9bc27d25a23b68a704e67c42bea8be4",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "fragrance"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_temporal_change_skin_v4",
+    "source": "amazon_beauty",
+    "kind": "temporal_change",
+    "scope_name": "skin-care and cleansing products",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2019-01-08",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within skin-care and cleansing products, investigate changes in reported experiences before versus on/after 2019-01-08. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_skin_v4.jsonl.gz",
+    "corpus_sha256": "a599b62a475936e0a2dd9463750221c26e0d93ebad93007ddb0eee4c44e1c0a9",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "skin"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_temporal_change_hair_tools_v4",
+    "source": "amazon_beauty",
+    "kind": "temporal_change",
+    "scope_name": "hair tools and brushes",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2019-09-07",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within hair tools and brushes, investigate changes in reported experiences before versus on/after 2019-09-07. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_hair_tools_v4.jsonl.gz",
+    "corpus_sha256": "97692f42b1bd3360e0dc566f43bdbd98eb32eff99ad31ac3176bda62c72083b6",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "hair_tools"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_compound_association_hair_care_v4",
+    "source": "amazon_beauty",
+    "kind": "compound_association",
+    "scope_name": "hair-care products",
+    "comparison": null,
+    "question": "Within hair-care products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 416,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_compound_association_hair_care_v4.jsonl.gz",
+    "corpus_sha256": "e4eddaf50a700ed6094f04ddc99568ab903792ac52c5e08a55e4f6cbf778336d",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "hair_care"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_compound_association_nails_v4",
+    "source": "amazon_beauty",
+    "kind": "compound_association",
+    "scope_name": "nail-care products",
+    "comparison": null,
+    "question": "Within nail-care products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_compound_association_nails_v4.jsonl.gz",
+    "corpus_sha256": "d63dab5181db0e3247ff20c5b7081a15f55e892e19447efb79ff1c45f84173aa",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "nails"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_compound_association_makeup_v4",
+    "source": "amazon_beauty",
+    "kind": "compound_association",
+    "scope_name": "makeup products",
+    "comparison": null,
+    "question": "Within makeup products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_compound_association_makeup_v4.jsonl.gz",
+    "corpus_sha256": "418d2433feed78d3894cebcb8d857f7befb6bd341713af57a167133922904583",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "makeup"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "amazon_beauty_compound_association_skin_v4",
+    "source": "amazon_beauty",
+    "kind": "compound_association",
+    "scope_name": "skin-care and cleansing products",
+    "comparison": null,
+    "question": "Within skin-care and cleansing products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/amazon_beauty_compound_association_skin_v4.jsonl.gz",
+    "corpus_sha256": "301b4dd5f7e96f47abb8c03f2cb70147ed12c4a975fb62fa8423746f286dd1b4",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "product_context": "skin"
+    },
+    "dependence_block": "amazon_beauty",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_group_difference_services_v4",
+    "source": "app_reviews",
+    "kind": "group_difference",
+    "scope_name": "Google Play Services and Google Authenticator",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "com.google.android.gms",
+        "com.google.android.apps.authenticator2"
+      ]
+    },
+    "question": "Within Google Play Services and Google Authenticator, investigate substantive differences in reported experiences between com.google.android.gms and com.google.android.apps.authenticator2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_group_difference_services_v4.jsonl.gz",
+    "corpus_sha256": "6eeb2a116c21363507b9350e202b0625655610a374745e7fb8ced83a1c166d42",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.google.android.gms",
+        "com.google.android.apps.authenticator2"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_group_difference_messaging_v4",
+    "source": "app_reviews",
+    "kind": "group_difference",
+    "scope_name": "Telegram and SMS Backup+",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "org.telegram.messenger",
+        "com.zegoggles.smssync"
+      ]
+    },
+    "question": "Within Telegram and SMS Backup+, investigate substantive differences in reported experiences between org.telegram.messenger and com.zegoggles.smssync. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_group_difference_messaging_v4.jsonl.gz",
+    "corpus_sha256": "9ece304ebe773d0d3f163f83509250cba9edbfad02c77b04b6180afacc055e23",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "org.telegram.messenger",
+        "com.zegoggles.smssync"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_group_difference_emulators_v4",
+    "source": "app_reviews",
+    "kind": "group_difference",
+    "scope_name": "PPSSPP and Reicast",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "org.ppsspp.ppsspp",
+        "com.reicast.emulator"
+      ]
+    },
+    "question": "Within PPSSPP and Reicast, investigate substantive differences in reported experiences between org.ppsspp.ppsspp and com.reicast.emulator. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_group_difference_emulators_v4.jsonl.gz",
+    "corpus_sha256": "3f5c9c619d7f67699ef85e4dc1fa680909c3be82d46029b7b3469f1b31674c63",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "org.ppsspp.ppsspp",
+        "com.reicast.emulator"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_group_difference_display_v4",
+    "source": "app_reviews",
+    "kind": "group_difference",
+    "scope_name": "AcDisplay and Muzei",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "com.achep.acdisplay",
+        "net.nurik.roman.muzei"
+      ]
+    },
+    "question": "Within AcDisplay and Muzei, investigate substantive differences in reported experiences between com.achep.acdisplay and net.nurik.roman.muzei. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_group_difference_display_v4.jsonl.gz",
+    "corpus_sha256": "bcd975abf7668f97da3fdc890d0b9aa22c354b30f4a72405be977f0f91ca28df",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.achep.acdisplay",
+        "net.nurik.roman.muzei"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_group_difference_files_v4",
+    "source": "app_reviews",
+    "kind": "group_difference",
+    "scope_name": "FrostWire and DiskUsage",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "com.frostwire.android",
+        "com.google.android.diskusage"
+      ]
+    },
+    "question": "Within FrostWire and DiskUsage, investigate substantive differences in reported experiences between com.frostwire.android and com.google.android.diskusage. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_group_difference_files_v4.jsonl.gz",
+    "corpus_sha256": "3e368b42a24419a7048cd324ac589efdaf9370d85f9e28d69d53e20b6db93ac1",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.frostwire.android",
+        "com.google.android.diskusage"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_temporal_change_sky_map_v5",
+    "source": "app_reviews",
+    "kind": "temporal_change",
+    "scope_name": "com.google.android.stardroid",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2016-09-16",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within com.google.android.stardroid, investigate changes in reported experiences before versus on/after 2016-09-16. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 281,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_temporal_change_sky_map_v5.jsonl.gz",
+    "corpus_sha256": "e1ff80a1fbc71daea8ef2c82461e29d6a7d8258948acf236742f665dc81ad528",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.google.android.stardroid"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_temporal_change_publishing_v4",
+    "source": "app_reviews",
+    "kind": "temporal_change",
+    "scope_name": "org.wordpress.android",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2016-08-14",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within org.wordpress.android, investigate changes in reported experiences before versus on/after 2016-08-14. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 330,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_temporal_change_publishing_v4.jsonl.gz",
+    "corpus_sha256": "d1c32acf084891b7ec1a4cf3a445da01ebd96ad87585426b955094318511b402",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "org.wordpress.android"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_temporal_change_accessibility_v4",
+    "source": "app_reviews",
+    "kind": "temporal_change",
+    "scope_name": "com.google.android.marvin.talkback",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2016-12-27",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within com.google.android.marvin.talkback, investigate changes in reported experiences before versus on/after 2016-12-27. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 312,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_temporal_change_accessibility_v4.jsonl.gz",
+    "corpus_sha256": "065dfd4e00d14f32bb8a9b3b42951f1bb5ea3e6228bbb187a430f80e142a78e7",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.google.android.marvin.talkback"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_temporal_change_game_v4",
+    "source": "app_reviews",
+    "kind": "temporal_change",
+    "scope_name": "com.watabou.pixeldungeon",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2016-04-02",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within com.watabou.pixeldungeon, investigate changes in reported experiences before versus on/after 2016-04-02. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 301,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_temporal_change_game_v4.jsonl.gz",
+    "corpus_sha256": "604c99cfd524ae0c5fd54ed560ad9f30bdc14caaec030552ff1b3277777aabc4",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.watabou.pixeldungeon"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_compound_association_services_v4",
+    "source": "app_reviews",
+    "kind": "compound_association",
+    "scope_name": "com.google.android.gms",
+    "comparison": null,
+    "question": "Within com.google.android.gms, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_compound_association_services_v4.jsonl.gz",
+    "corpus_sha256": "88f6ff1feca6108610ad1cc9d8c285e64370b8fad404c84283d032aa393450e5",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.google.android.gms"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_compound_association_messaging_v4",
+    "source": "app_reviews",
+    "kind": "compound_association",
+    "scope_name": "org.telegram.messenger",
+    "comparison": null,
+    "question": "Within org.telegram.messenger, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_compound_association_messaging_v4.jsonl.gz",
+    "corpus_sha256": "df146622c29b7f150f10d17b39aa147f047cde596c16344e25f613abbe379dff",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "org.telegram.messenger"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_compound_association_emulator_v4",
+    "source": "app_reviews",
+    "kind": "compound_association",
+    "scope_name": "com.opendoorstudios.ds4droid",
+    "comparison": null,
+    "question": "Within com.opendoorstudios.ds4droid, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 297,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_compound_association_emulator_v4.jsonl.gz",
+    "corpus_sha256": "a7655a57e93d61d8e6fcbc74323e6c7cb3551edb44ae1f8120cba7d8663d7d18",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "com.opendoorstudios.ds4droid"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "app_reviews_compound_association_news_v4",
+    "source": "app_reviews",
+    "kind": "compound_association",
+    "scope_name": "org.npr.android.news",
+    "comparison": null,
+    "question": "Within org.npr.android.news, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 263,
+    "max_findings": 5,
+    "corpus_path": "corpora/app_reviews_compound_association_news_v4.jsonl.gz",
+    "corpus_sha256": "a541586e7409cd922902b8dda3721eeea7d4f8e3afc2ecdf38d1dbbe1b6c4d8b",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "org.npr.android.news"
+      ]
+    },
+    "dependence_block": "app_reviews",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_group_difference_tx_v4",
+    "source": "cfpb",
+    "kind": "group_difference",
+    "scope_name": "TX credit-reporting complaints",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "Experian Information Solutions Inc.",
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
+      ]
+    },
+    "question": "Within TX credit-reporting complaints, investigate substantive differences in reported experiences between Experian Information Solutions Inc. and TRANSUNION INTERMEDIATE HOLDINGS, INC.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_group_difference_tx_v4.jsonl.gz",
+    "corpus_sha256": "342389725fd318329c262304dd9f4f7e2d23784f11a89d5b6e37eb587315d505",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "state": "TX",
+      "entity_ids": [
+        "Experian Information Solutions Inc.",
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_group_difference_fl_v4",
+    "source": "cfpb",
+    "kind": "group_difference",
+    "scope_name": "FL credit-reporting complaints",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "EQUIFAX, INC.",
+        "Experian Information Solutions Inc."
+      ]
+    },
+    "question": "Within FL credit-reporting complaints, investigate substantive differences in reported experiences between EQUIFAX, INC. and Experian Information Solutions Inc.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_group_difference_fl_v4.jsonl.gz",
+    "corpus_sha256": "956ca973b1c716fd47d47c4c783c6103b009971327c6601ea8089b012dabe1f5",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "state": "FL",
+      "entity_ids": [
+        "EQUIFAX, INC.",
+        "Experian Information Solutions Inc."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_group_difference_ca_v4",
+    "source": "cfpb",
+    "kind": "group_difference",
+    "scope_name": "CA credit-reporting complaints",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
+        "EQUIFAX, INC."
+      ]
+    },
+    "question": "Within CA credit-reporting complaints, investigate substantive differences in reported experiences between TRANSUNION INTERMEDIATE HOLDINGS, INC. and EQUIFAX, INC.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_group_difference_ca_v4.jsonl.gz",
+    "corpus_sha256": "a71889fd0d80351cca9cbe3037ff8f78ffd28df901b523934f47052c4ab8cfa7",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "state": "CA",
+      "entity_ids": [
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
+        "EQUIFAX, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_group_difference_ny_v4",
+    "source": "cfpb",
+    "kind": "group_difference",
+    "scope_name": "NY credit-reporting complaints",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "Experian Information Solutions Inc.",
+        "EQUIFAX, INC."
+      ]
+    },
+    "question": "Within NY credit-reporting complaints, investigate substantive differences in reported experiences between Experian Information Solutions Inc. and EQUIFAX, INC.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_group_difference_ny_v4.jsonl.gz",
+    "corpus_sha256": "4c67f818b625c97fef339d9fae2cb2c6da7f3954be67b4c89a21cf712f384932",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "state": "NY",
+      "entity_ids": [
+        "Experian Information Solutions Inc.",
+        "EQUIFAX, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_group_difference_ga_v4",
+    "source": "cfpb",
+    "kind": "group_difference",
+    "scope_name": "GA credit-reporting complaints",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
+        "Experian Information Solutions Inc."
+      ]
+    },
+    "question": "Within GA credit-reporting complaints, investigate substantive differences in reported experiences between TRANSUNION INTERMEDIATE HOLDINGS, INC. and Experian Information Solutions Inc.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_group_difference_ga_v4.jsonl.gz",
+    "corpus_sha256": "dd34175d1223d074acd10185663b02a355438119618716f87019185269c170ab",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "state": "GA",
+      "entity_ids": [
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
+        "Experian Information Solutions Inc."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_temporal_change_experian_refreshed_v5",
+    "source": "cfpb",
+    "kind": "temporal_change",
+    "scope_name": "experian credit-reporting complaints",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2025-01-16",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within experian credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-16. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_temporal_change_experian_refreshed_v5.jsonl.gz",
+    "corpus_sha256": "a34018f6a8138a27f97ba8517d1914678a7b10baae54468349e0f6405d29b5a6",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "Experian Information Solutions Inc."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_temporal_change_transunion_v4",
+    "source": "cfpb",
+    "kind": "temporal_change",
+    "scope_name": "transunion credit-reporting complaints",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2025-01-17",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within transunion credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-17. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_temporal_change_transunion_v4.jsonl.gz",
+    "corpus_sha256": "15e0b19d239fd5fcac6886022061ee804759170ad51a9314c760a57746cfecaf",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_temporal_change_equifax_v4",
+    "source": "cfpb",
+    "kind": "temporal_change",
+    "scope_name": "equifax credit-reporting complaints",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2025-01-25",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within equifax credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-25. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_temporal_change_equifax_v4.jsonl.gz",
+    "corpus_sha256": "6f4e061f5ad4d2dd8c4b9f1216945b58a1943b382eadc23310fbb68f7d7748ed",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "EQUIFAX, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_temporal_change_other_companies_v4",
+    "source": "cfpb",
+    "kind": "temporal_change",
+    "scope_name": "other companies credit-reporting complaints",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2025-01-31",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within other companies credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-31. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_temporal_change_other_companies_v4.jsonl.gz",
+    "corpus_sha256": "f95d4cb507b9f9abeb319d89a9c2da0fad9d15a73dfe03566faf21c34c128361",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "exclude_entity_ids": [
+        "Experian Information Solutions Inc.",
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
+        "EQUIFAX, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_compound_association_experian_v4",
+    "source": "cfpb",
+    "kind": "compound_association",
+    "scope_name": "Experian Information Solutions Inc.",
+    "comparison": null,
+    "question": "Within Experian Information Solutions Inc., discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_compound_association_experian_v4.jsonl.gz",
+    "corpus_sha256": "9794bdd6c496d54cb1e6c39a27d32b761fd97c215a3caca016224058c5545475",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "Experian Information Solutions Inc."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_compound_association_transunion_v4",
+    "source": "cfpb",
+    "kind": "compound_association",
+    "scope_name": "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
+    "comparison": null,
+    "question": "Within TRANSUNION INTERMEDIATE HOLDINGS, INC., discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_compound_association_transunion_v4.jsonl.gz",
+    "corpus_sha256": "3ca730750df35e081f6dc9b10313f1403b735bcfed0b2acb57b7e6d3c774b67b",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "cfpb_compound_association_equifax_v4",
+    "source": "cfpb",
+    "kind": "compound_association",
+    "scope_name": "EQUIFAX, INC.",
+    "comparison": null,
+    "question": "Within EQUIFAX, INC., discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/cfpb_compound_association_equifax_v4.jsonl.gz",
+    "corpus_sha256": "e69f5827c448b4d06a946b12693498e24396bedb0c51cadde571fbf1332852be",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "entity_ids": [
+        "EQUIFAX, INC."
+      ]
+    },
+    "dependence_block": "cfpb",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_group_difference_ford_suvs_v4",
+    "source": "nhtsa",
+    "kind": "group_difference",
+    "scope_name": "FORD|ESCAPE versus FORD|EXPLORER",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "FORD|ESCAPE",
+        "FORD|EXPLORER"
+      ]
+    },
+    "question": "Within FORD|ESCAPE versus FORD|EXPLORER, investigate substantive differences in reported experiences between FORD|ESCAPE and FORD|EXPLORER. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_group_difference_ford_suvs_v4.jsonl.gz",
+    "corpus_sha256": "f7cccc93c1b8860d9d024a25d85bbb5e6750341277778dae75775116b763e82b",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "vehicle_models": [
+        "FORD|ESCAPE",
+        "FORD|EXPLORER"
+      ]
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_group_difference_pickups_refreshed_v5",
+    "source": "nhtsa",
+    "kind": "group_difference",
+    "scope_name": "FORD|F-150 versus RAM|1500",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "FORD|F-150",
+        "RAM|1500"
+      ]
+    },
+    "question": "Within FORD|F-150 versus RAM|1500, investigate substantive differences in reported experiences between FORD|F-150 and RAM|1500. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_group_difference_pickups_refreshed_v5.jsonl.gz",
+    "corpus_sha256": "b6adb92bd8b62d86128c3ec0a4b9ccce05d2fecb552e932d6d7ab19bcddc067e",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "vehicle_models": [
+        "FORD|F-150",
+        "RAM|1500"
+      ]
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_group_difference_sedans_v4",
+    "source": "nhtsa",
+    "kind": "group_difference",
+    "scope_name": "HYUNDAI|SONATA versus KIA|OPTIMA",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "HYUNDAI|SONATA",
+        "KIA|OPTIMA"
+      ]
+    },
+    "question": "Within HYUNDAI|SONATA versus KIA|OPTIMA, investigate substantive differences in reported experiences between HYUNDAI|SONATA and KIA|OPTIMA. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 453,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_group_difference_sedans_v4.jsonl.gz",
+    "corpus_sha256": "e5d1a5f8804ccccbb3b1d12b379721fd011df906cfa7bf5b33a925057092609b",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "vehicle_models": [
+        "HYUNDAI|SONATA",
+        "KIA|OPTIMA"
+      ]
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_group_difference_honda_cars_v4",
+    "source": "nhtsa",
+    "kind": "group_difference",
+    "scope_name": "HONDA|ACCORD versus HONDA|CIVIC",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "HONDA|ACCORD",
+        "HONDA|CIVIC"
+      ]
+    },
+    "question": "Within HONDA|ACCORD versus HONDA|CIVIC, investigate substantive differences in reported experiences between HONDA|ACCORD and HONDA|CIVIC. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_group_difference_honda_cars_v4.jsonl.gz",
+    "corpus_sha256": "353e7a9d740023b84c30f64d2e698023c1b406300f665991b38c567e0d3bbf72",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "vehicle_models": [
+        "HONDA|ACCORD",
+        "HONDA|CIVIC"
+      ]
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_group_difference_subaru_v4",
+    "source": "nhtsa",
+    "kind": "group_difference",
+    "scope_name": "SUBARU|OUTBACK versus SUBARU|FORESTER",
+    "comparison": {
+      "field": "comparison_group",
+      "groups": [
+        "SUBARU|OUTBACK",
+        "SUBARU|FORESTER"
+      ]
+    },
+    "question": "Within SUBARU|OUTBACK versus SUBARU|FORESTER, investigate substantive differences in reported experiences between SUBARU|OUTBACK and SUBARU|FORESTER. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 446,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_group_difference_subaru_v4.jsonl.gz",
+    "corpus_sha256": "84f69711cba99ed0c2774ee0517ebf1f0bbe01862c99d8df2de2ccb6542d6d92",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "vehicle_models": [
+        "SUBARU|OUTBACK",
+        "SUBARU|FORESTER"
+      ]
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_temporal_change_nissan_v4",
+    "source": "nhtsa",
+    "kind": "temporal_change",
+    "scope_name": "nissan vehicle complaints",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2022-03-10",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within nissan vehicle complaints, investigate changes in reported experiences before versus on/after 2022-03-10. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_temporal_change_nissan_v4.jsonl.gz",
+    "corpus_sha256": "be234fb7296cb7e4c148d67184fc2ac2fb5d653e8fc5485a5a6e8fad0a2da02c",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "make": "NISSAN"
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_temporal_change_ford_cars_v4",
+    "source": "nhtsa",
+    "kind": "temporal_change",
+    "scope_name": "ford cars vehicle complaints",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2022-08-22",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within ford cars vehicle complaints, investigate changes in reported experiences before versus on/after 2022-08-22. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_temporal_change_ford_cars_v4.jsonl.gz",
+    "corpus_sha256": "8ddd37685dd177f0c7688342716f6e70db1e83f9454a4e98a90ce1a722667760",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "vehicle_models": [
+        "FORD|FUSION",
+        "FORD|FOCUS"
+      ]
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_temporal_change_honda_suvs_v4",
+    "source": "nhtsa",
+    "kind": "temporal_change",
+    "scope_name": "honda suvs vehicle complaints",
+    "comparison": {
+      "field": "timestamp",
+      "cutoff": "2022-12-10",
+      "groups": [
+        "before",
+        "on_or_after"
+      ]
+    },
+    "question": "Within honda suvs vehicle complaints, investigate changes in reported experiences before versus on/after 2022-12-10. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 500,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_temporal_change_honda_suvs_v4.jsonl.gz",
+    "corpus_sha256": "87ed498b8deec9d14d8249442d7bc0fce6199fa122a6a463d8e09191bbe314b3",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "vehicle_models": [
+        "HONDA|CR-V",
+        "HONDA|PILOT"
+      ]
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_compound_association_chevrolet_v4",
+    "source": "nhtsa",
+    "kind": "compound_association",
+    "scope_name": "CHEVROLET vehicle complaints",
+    "comparison": null,
+    "question": "Within CHEVROLET vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_compound_association_chevrolet_v4.jsonl.gz",
+    "corpus_sha256": "4d6cd70af18f54a25e3dc58b7aaf822cffed08ae28710033820bb6f74c6c764f",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "make": "CHEVROLET"
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_compound_association_jeep_v4",
+    "source": "nhtsa",
+    "kind": "compound_association",
+    "scope_name": "JEEP vehicle complaints",
+    "comparison": null,
+    "question": "Within JEEP vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_compound_association_jeep_v4.jsonl.gz",
+    "corpus_sha256": "a4006b33adaa8c42755b801b17c9a054daa5c68570164f923beca76761422586",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "make": "JEEP"
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_compound_association_toyota_refreshed_v5",
+    "source": "nhtsa",
+    "kind": "compound_association",
+    "scope_name": "TOYOTA vehicle complaints",
+    "comparison": null,
+    "question": "Within TOYOTA vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_compound_association_toyota_refreshed_v5.jsonl.gz",
+    "corpus_sha256": "77f8ebafd22360c54a0ebc3e7ac4670d18abadb87b3e95693d7a7e7cde14a629",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "make": "TOYOTA"
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  },
+  {
+    "task_id": "nhtsa_compound_association_tesla_v4",
+    "source": "nhtsa",
+    "kind": "compound_association",
+    "scope_name": "TESLA vehicle complaints",
+    "comparison": null,
+    "question": "Within TESLA vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
+    "n_documents": 600,
+    "max_findings": 5,
+    "corpus_path": "corpora/nhtsa_compound_association_tesla_v4.jsonl.gz",
+    "corpus_sha256": "9ede3f7ba9663dd77b16ddc38488bd79653facdea1fa212c1cff5adf186a1ebe",
+    "output_contract": "output.schema.json",
+    "selection_scope": {
+      "make": "TESLA"
+    },
+    "dependence_block": "nhtsa",
+    "split": "evaluation"
+  }
+]

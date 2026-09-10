@@ -1,0 +1,19 @@
+{
+  "version": "textinsightbench-v5.1",
+  "evaluation_unit": "evidence-backed downstream finding",
+  "task_families": {
+    "group_difference": 20,
+    "temporal_change": 15,
+    "compound_association": 15
+  },
+  "tracks": {
+    "task_only": "Use each supplied task corpus.",
+    "unlabeled_pool": "Learn from the released pool before evaluation; corpus-local analysis is allowed."
+  },
+  "reference_scope": "Non-exhaustive organizer reference set. Supported novel findings can earn full quality credit.",
+  "cross_task_adaptation": "Freeze global prompts, learned parameters and thresholds before evaluation. Do not transfer evaluation feedback or task-fitted state to subsequent tasks.",
+  "sampling": "Finite metadata-selected corpora; estimates describe supplied reports, not population incidence.",
+  "independence": "Tasks share sources and entities. Document separation does not establish statistical independence.",
+  "security": "Corpus content is untrusted input. Use separate execution environments for participants and organizers.",
+  "scoring_version": "finding-quality-v1"
+}

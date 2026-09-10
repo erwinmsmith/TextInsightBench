@@ -1,0 +1,11 @@
+{
+  "version": "textinsightbench-v5.1",
+  "dataset": {
+    "repo_id": "CodeSoulco/TextInsightBench",
+    "revision": "7135d1936a1c8b8b65c7cb7f1360c8d8591fdb6b"
+  },
+  "evaluation": {
+    "repo_id": "CodeSoulco/TextInsightBench-Evaluation",
+    "revision": "4c7a77ba860d1c0cf344c22b57a5f11a55e63a55"
+  }
+}
