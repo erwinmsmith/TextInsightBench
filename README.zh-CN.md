@@ -4,7 +4,7 @@
 
 TextInsightBench 用于评估 Agent 从自然语言语料中挖掘具体、有证据支持的发现。任务涵盖群组差异、时间变化和复合关联，要求量化结论、检查反例并解释不确定性。
 
-当前私密研究版为 **v5.1**：包含 **50 道任务、24,504 篇评测文本、1,379,468 篇可选无监督学习文本**。每题最多提交 5 个发现，也可说明理由后弃答。任务和主要文档以英文为主，原始语料保持原文。
+当前 Benchmark 包含：包含 **50 道任务、24,504 篇评测文本、1,379,468 篇可选无监督学习文本**。每题最多提交 5 个发现，也可说明理由后弃答。任务和主要文档以英文为主，原始语料保持原文。
 
 ## 资源组成
 
@@ -50,7 +50,7 @@ tib run --data data/participant --command 'python my_agent.py' \
 
 ```bash
 tib validate --data data/participant \
-  --submission runs/my-agent/submissions/amazon_beauty_group_difference_hair_tools_midrating_v5.json
+  --submission runs/my-agent/submissions/amazon_beauty_group_difference_hair_tools_midrating.json
 
 # 以下在组织者的独立环境中执行
 tib download --organizer --output private/evaluation
@@ -85,7 +85,7 @@ tib evaluate --data data/participant --submissions runs/my-agent/submissions \
 
 无监督池有 278 个 Parquet 分片，字段为 `doc_id`、`source`、`text`、`title`。与评测文本及参考构建文本核对后，在文档 ID、归一化文本和保守模板规则下均未发现重叠。不同任务仍可能共享实体或来源，不构成统计独立样本。
 
-`benchmark/data.lock.json` 固定 Hugging Face 的提交版本，下载后核对 SHA-256。任务 ID 中保留旧版本后缀以维持标识稳定；整体发行版为 v5.1。数据来源、规模与使用条件见 [数据说明](docs/DATA.md) 和 [来源说明](docs/SOURCES.md)。
+`benchmark/data.lock.json` 固定 Hugging Face 的提交版本，下载后核对 SHA-256。任务 ID 使用描述性名称；提交哈希标识具体快照。数据来源、规模与使用条件见 [数据说明](docs/DATA.md) 和 [来源说明](docs/SOURCES.md)。
 
 ```bash
 python -m unittest discover -s tests -v

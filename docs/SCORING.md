@@ -1,4 +1,4 @@
-# Scoring standard — finding-quality-v1
+# Scoring standard — finding-quality
 
 The evaluation unit is an evidence-backed downstream finding. Observable definitions and evidence determine validity; the organizer reference set is non-exhaustive. The rubric is public. Reference conclusions are reserved for organizer-side coverage measurement.
 
@@ -6,7 +6,7 @@ The evaluation unit is an evidence-backed downstream finding. Observable definit
 
 Submissions must satisfy the JSON schema, task kind, maximum finding count, a complete mutually exclusive positive/negative/unknown document partition for each condition, exact source quotations and offsets, and the full set of recomputed statistics. A tolerance of 1e-6 applies to numeric fields. Quotations use Python Unicode string offsets, with an exclusive end. Duplicate IDs, fabricated documents and incomplete partitions are invalid.
 
-Invalid submissions have no semantic quality score. They lower the valid submission rate and prevent a complete-suite quality mean. Unlike a soft arithmetic penalty, v5.1 requires full arithmetic consistency before semantic scoring.
+Invalid submissions have no semantic quality score. They lower the valid submission rate and prevent a complete-suite quality mean. Unlike a soft arithmetic penalty, The benchmark requires full arithmetic consistency before semantic scoring.
 
 ## Semantic assessment
 

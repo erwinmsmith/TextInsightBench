@@ -166,7 +166,7 @@ def judge(args):
             if set(quality) != {'findings'} or any(r.get('reference_match') is not None for r in quality['findings']):
                 raise ValueError('Quality stage must not assign reference matches')
             review = {'task_id': tid, 'submission_sha256': digest(sub), 'corpus_sha256': task['corpus_sha256'],
-                'reference_sha256': ref_sha, 'scoring_version': 'finding-quality-v1',
+                'reference_sha256': ref_sha, 'scoring_version': 'finding-quality',
                 'reviewer_method': args.base_url + ' / ' + args.model,
                 'findings': quality['findings'], 'provider_receipts': [q_receipt]}
             # Validate before invoking the separate reference matching stage.

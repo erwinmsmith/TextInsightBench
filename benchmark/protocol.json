@@ -1,5 +1,5 @@
 {
-  "version": "textinsightbench-v5.1",
+  "version": "textinsightbench",
   "evaluation_unit": "evidence-backed downstream finding",
   "task_families": {
     "group_difference": 20,
@@ -15,5 +15,5 @@
   "sampling": "Finite metadata-selected corpora; estimates describe supplied reports, not population incidence.",
   "independence": "Tasks share sources and entities. Document separation does not establish statistical independence.",
   "security": "Corpus content is untrusted input. Use separate execution environments for participants and organizers.",
-  "scoring_version": "finding-quality-v1"
+  "scoring_version": "finding-quality"
 }

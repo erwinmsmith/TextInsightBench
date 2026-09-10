@@ -1,4 +1,4 @@
-# Release verification — v5.1
+# Release verification
 
 The initial release was checked on 2026-09-10. These are engineering checks, not measured mining performance.
 

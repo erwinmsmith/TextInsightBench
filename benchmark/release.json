@@ -1,5 +1,5 @@
 {
-  "version": "textinsightbench-v5.1",
+  "version": "textinsightbench",
   "tasks": 50,
   "evaluation_documents": 24504,
   "learning_documents": 1379468,
@@ -35,5 +35,5 @@
   "pool_exclusions": {},
   "pool_exclusion_scope": "Evaluation documents and reference-development documents, by ID, normalized text and conservative template fingerprint.",
   "source_pool_documents": 1379468,
-  "reference_release": "organizer-reference-v2"
+  "reference_release": "organizer-reference"
 }

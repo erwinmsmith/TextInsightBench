@@ -10,7 +10,7 @@ def score(sub, task, rows, reference, review, reference_sha256):
     validate_submission(sub, task, rows)
     binding = {'task_id': task['task_id'], 'submission_sha256': digest(sub),
                'corpus_sha256': task['corpus_sha256'], 'reference_sha256': reference_sha256,
-               'scoring_version': 'finding-quality-v1'}
+               'scoring_version': 'finding-quality'}
     if any(review.get(k) != v for k, v in binding.items()):
         raise ValueError('Review binding mismatch')
     if not isinstance(review.get('reviewer_method'), str) or not review['reviewer_method'].strip():
@@ -78,5 +78,5 @@ def aggregate(tasks, records):
             groups[task[axis]].append(task)
         report['by_' + axis] = {name: summarize(group) for name, group in groups.items()}
     report['task_scores'] = records
-    report['scoring_version'] = 'finding-quality-v1'
+    report['scoring_version'] = 'finding-quality'
     return report

@@ -6,7 +6,7 @@ TextInsightBench evaluates agents that mine natural-language datasets for specif
 
 The benchmark contains **50 tasks**, **24,504 evaluation documents**, and an optional **1,379,468-document unlabeled learning pool**. Every task accepts up to five findings or a reasoned abstention. The evaluation compares claims, observable definitions, document assignments, statistics and exact quotations. Any analysis method is allowed.
 
-This is the private research release **v5.1**. English is the primary language of the tasks, documentation and submission examples. Original document text is preserved.
+This is the private research release of TextInsightBench. English is the primary language of the tasks, documentation and submission examples. Original document text is preserved.
 
 ## Repositories
 
@@ -69,7 +69,7 @@ Validate one answer locally:
 
 ```bash
 tib validate --data data/participant \
-  --submission runs/my-agent/submissions/amazon_beauty_group_difference_hair_tools_midrating_v5.json
+  --submission runs/my-agent/submissions/amazon_beauty_group_difference_hair_tools_midrating.json
 ```
 
 An organizer downloads references in a separate environment and can immediately produce a structural report:
@@ -110,4 +110,4 @@ The [complete scoring standard](docs/SCORING.md) defines gates, partial support,
 python -m unittest discover -s tests -v
 ```
 
-Data comes from Amazon Reviews'23 All Beauty, Android App Reviews, CFPB complaints and NHTSA complaints. Source terms differ; the compilation does not grant a new license to third-party text. See [source attribution and data terms](docs/SOURCES.md). Task IDs retain earlier version suffixes as stable identifiers; v5.1 identifies this complete distribution.
+Data comes from Amazon Reviews'23 All Beauty, Android App Reviews, CFPB complaints and NHTSA complaints. Source terms differ; the compilation does not grant a new license to third-party text. See [source attribution and data terms](docs/SOURCES.md). Task IDs are descriptive, unversioned identifiers; commit hashes identify exact snapshots.
