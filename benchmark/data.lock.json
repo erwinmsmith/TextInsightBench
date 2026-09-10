@@ -2,10 +2,10 @@
   "version": "textinsightbench",
   "dataset": {
     "repo_id": "CodeSoulco/TextInsightBench",
-    "revision": "b37998c82a0eb55c263d729babff84bb4871511e"
+    "revision": "e7bfffed1cd649ac96b0e877bf883f9446d25cf3"
   },
   "evaluation": {
     "repo_id": "CodeSoulco/TextInsightBench-Evaluation",
-    "revision": "be0be6375865e4628ff9be846540ef787008558c"
+    "revision": "83c8ffd1f2a634149cc185ba8948caeb2d927f32"
   }
 }

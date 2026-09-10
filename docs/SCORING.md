@@ -1,6 +1,8 @@
 # Scoring standard — finding-quality
 
-The evaluation unit is an evidence-backed downstream finding. Observable definitions and evidence determine validity; the organizer reference set is non-exhaustive. The rubric is public. Reference conclusions are reserved for organizer-side coverage measurement.
+The evaluation unit is an evidence-backed downstream finding. Observable definitions and evidence determine validity; the organizer reference set is non-exhaustive. The rubric is public. Reference conclusions are public and used separately for coverage measurement; disclose reference access when reporting results.
+
+This page describes `standard`. The stricter `--difficulty hard` profile adds deterministic robustness checks, a three-document evidence minimum and a 15/25/20/30/10 weighting. See [difficulty profiles](DIFFICULTY.md). Do not compare or aggregate scores across profiles.
 
 ## Structural gate
 

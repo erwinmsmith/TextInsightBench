@@ -1,10 +1,10 @@
 # Organizer Reference Set and evaluation
 
-The organizer dataset is a separate private Hugging Face repository. It contains `references.json`, `release.json`, and bilingual dataset cards. Access must not be granted to benchmark participants. Public scoring dimensions are documented in `SCORING.md`; task-specific reference content is reserved for organizer use.
+The organizer dataset is a separate public Hugging Face repository containing `references.json`, `release.json`, and bilingual dataset cards. References are openly available for reproduction; do not describe this as a hidden-answer benchmark. Reference-blind runs must restrict participant access and report the development/evaluation access policy. Public scoring dimensions are documented in `SCORING.md`.
 
 There are 50 reference entries, one per task. Each includes a stable reference ID, candidate claim, expected direction, observable condition specification, development evidence with embedded source text and quotation offsets, and limitations. Development evidence can come from records outside the final task corpus; `in_evaluation_corpus` explicitly identifies this. It helps interpret the definition and does not establish final-corpus prevalence.
 
-The reference conclusions were AI-generated and frozen by the maintainer. They are non-exhaustive and not independently validated. Their wording may retain development-hypothesis language to preserve epistemic status. Document-level confirmation annotations and confirmation statistics are excluded. Removing those diagnostics does not increase certainty in the reference claims. Evaluate the participant's actual corpus evidence before considering reference matching.
+The reference conclusions were AI-generated. They are non-exhaustive and not independently validated. Their wording may retain development-hypothesis language to preserve epistemic status. Document-level confirmation annotations and confirmation statistics are excluded. Removing those diagnostics does not increase certainty in the reference claims. Evaluate the participant's actual corpus evidence before considering reference matching.
 
 ## Workflow
 

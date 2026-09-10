@@ -2,6 +2,7 @@
 import math
 from collections import defaultdict
 from .core import digest, validate_submission
+from .difficulty import scoring_version
 
 DIMENSIONS = ('statistical_validity', 'evidence_entailment', 'analytical_depth', 'calibration')
 
@@ -10,7 +11,9 @@ def score(sub, task, rows, reference, review, reference_sha256):
     validate_submission(sub, task, rows)
     binding = {'task_id': task['task_id'], 'submission_sha256': digest(sub),
                'corpus_sha256': task['corpus_sha256'], 'reference_sha256': reference_sha256,
-               'scoring_version': 'finding-quality'}
+               'scoring_version': scoring_version(task)}
+    if task.get('difficulty') == 'hard':
+        binding['task_sha256'] = digest(task)
     if any(review.get(k) != v for k, v in binding.items()):
         raise ValueError('Review binding mismatch')
     if not isinstance(review.get('reviewer_method'), str) or not review['reviewer_method'].strip():
@@ -43,7 +46,8 @@ def score(sub, task, rows, reference, review, reference_sha256):
         elif factor is None:
             value = None
         else:
-            value = factor * (35 + 25*r['statistical_validity'] + 20*r['evidence_entailment'] + 10*r['analytical_depth'] + 10*r['calibration'])
+            base, depth = (15, 30) if task.get('difficulty') == 'hard' else (35, 10)
+            value = factor * (base + 25*r['statistical_validity'] + 20*r['evidence_entailment'] + depth*r['analytical_depth'] + 10*r['calibration'])
         if r['reference_match'] and factor == 1 and r['task_fulfilled'] and r['duplicate_of'] is None:
             matched.add(r['reference_match'])
         out.append({'finding_id': fid, 'score': value, **r})
@@ -55,6 +59,9 @@ def score(sub, task, rows, reference, review, reference_sha256):
 
 
 def aggregate(tasks, records):
+    profiles = {t.get('difficulty', 'standard') for t in tasks}
+    if len(profiles) != 1:
+        raise ValueError('Do not aggregate different difficulty profiles')
     by_id = {r['task_id']: r for r in records}
     if len(by_id) != len(records) or set(by_id) != {t['task_id'] for t in tasks}:
         raise ValueError('Report must explicitly account for every task')
@@ -78,5 +85,6 @@ def aggregate(tasks, records):
             groups[task[axis]].append(task)
         report['by_' + axis] = {name: summarize(group) for name, group in groups.items()}
     report['task_scores'] = records
-    report['scoring_version'] = 'finding-quality'
+    report['difficulty'] = next(iter(profiles))
+    report['scoring_version'] = scoring_version(tasks[0])
     return report

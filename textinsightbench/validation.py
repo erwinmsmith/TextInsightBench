@@ -21,7 +21,7 @@ def groups(task,data):
     values=task['comparison']['groups'];need(len(values)==2 and values[0]!=values[1],'distinct groups required')
     return [{r['doc_id'] for r in data if r.get(task['comparison']['field'])==v} for v in values]
 
-def expected(f,task,data):
+def base_expected(f,task,data):
     a={x['condition_id']:x for x in f['assignments']};defs=f['definitions']
     if task['kind']!='compound_association':
         x=a[defs[0]['condition_id']];pos=set(x['positive_doc_ids']);unknown=set(x['unknown_doc_ids']);out={};bounds=[];rates=[];gs=groups(task,data)
@@ -35,6 +35,13 @@ def expected(f,task,data):
     n11,n10,n01,n00=map(len,(ap&bp,ap&bn,an&bp,an&bn));n=n11+n10+n01+n00;p1=n11/(n11+n10) if n11+n10 else None;p0=n01/(n01+n00) if n01+n00 else None
     return {'known_joint_n':n,'unknown_joint_n':len(data)-n,'n11':n11,'n10':n10,'n01':n01,'n00':n00,'p_b_given_a':p1,'p_b_given_not_a':p0,
         'conditional_difference_pp':100*(p1-p0) if None not in (p1,p0) else None,'lift':n11*n/((n11+n10)*(n11+n01)) if (n11+n10)*(n11+n01) else None}
+
+def expected(f,task,data):
+    out=base_expected(f,task,data)
+    if task.get('difficulty')=='hard':
+        from .difficulty import audit
+        out.update(audit(f,task,data)[0])
+    return out
 
 def validate(sub,task,data):
     need(set(sub)=={'task_id','findings','abstention_reason'} and sub['task_id']==task['task_id'],'invalid submission/task fields')
