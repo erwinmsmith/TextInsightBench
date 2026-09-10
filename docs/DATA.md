@@ -38,6 +38,6 @@ Each `tasks.json` entry includes `task_id`, `source`, `kind`, `scope_name`, `que
 
 ## Sampling and overlap
 
-The pool was curated from the downloaded source snapshots using English filtering, length constraints and deduplication. The CFPB pool is restricted to the 2024–2025 credit-reporting selection. The pool's original holdouts include pilot task corpora. For v5.1, every exported shard was checked again against current evaluation and reference-development documents using document IDs, normalized text hashes and a conservative template hash that collapses digits and punctuation. No additional removals were required.
+The pool was curated from the downloaded source snapshots using English filtering, length constraints and deduplication. The CFPB pool is restricted to the 2024–2025 credit-reporting selection. The pool's original holdouts include pilot task corpora. For this dataset, every exported shard was checked again against current evaluation and reference-development documents using document IDs, normalized text hashes and a conservative template hash that collapses digits and punctuation. No additional removals were required.
 
 This check is narrower than arbitrary semantic deduplication. Shared products, companies, apps, entities and source collection procedures remain. Source complaints and ratings are selected reports and do not measure population incidence. The benchmark is predominantly English; language filtering is imperfect. Original spelling and HTML fragments are retained to keep evidence offsets stable.

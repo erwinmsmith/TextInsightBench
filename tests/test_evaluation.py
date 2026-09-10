@@ -32,7 +32,7 @@ def fixture():
     reference = {'task_id': task['task_id'], 'reference_id': 'ref', 'claim': finding['claim'],
                  'expected_direction': 'positive', 'specification': {'scope': 'synthetic'}}
     review = {'task_id': task['task_id'], 'submission_sha256': digest(sub), 'corpus_sha256': task['corpus_sha256'],
-        'reference_sha256': 'refhash', 'scoring_version': 'finding-quality-v1', 'reviewer_method': 'synthetic fixture',
+        'reference_sha256': 'refhash', 'scoring_version': 'finding-quality', 'reviewer_method': 'synthetic fixture',
         'findings': [{'finding_id': 'f1', 'support': 'supported', 'task_fulfilled': True, 'statistical_validity': 0.8,
             'evidence_entailment': 0.9, 'analytical_depth': 0.7, 'calibration': 0.9,
             'duplicate_of': None, 'reference_match': None, 'rationale': 'Synthetic scoring fixture.'}]}
