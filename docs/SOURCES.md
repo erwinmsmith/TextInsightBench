@@ -1,6 +1,6 @@
 # Source attribution and data terms
 
-TextInsightBench is a derived research collection of third-party text. It does not grant a new license to source reviews or complaints. This initial distribution is private. The data card uses `license: other` and links here because upstream terms differ and not all redistribution rights are established.
+TextInsightBench is a derived research collection of third-party text. It does not grant a new license to source reviews or complaints. This distribution is public. Redistribution authorization for this release was confirmed before publication. The data card uses `license: other` because upstream terms differ; this is not a blanket open-source license for third-party text. The recorded upstream source status below is preserved.
 
 | Source | Upstream location | Recorded source status |
 |---|---|---|
@@ -16,4 +16,4 @@ Raw download endpoints recorded for reproducibility:
 - NHTSA: `https://static.nhtsa.gov/odi/ffdd/cmpl/COMPLAINTS_RECEIVED_2020-2024.zip`
 - App Reviews: `https://huggingface.co/datasets/sealuzh/app_reviews/resolve/9eaa95f66364367e8752b0f34c00f67aafa95d15/data/train-00000-of-00001.parquet`
 
-Released hashes identify the frozen derived files even when upstream downloads change. Complaint and review narratives are unverified author reports and may include personal information. The exported learning schema excludes user identifiers, but this is not a guarantee of complete de-identification of free text. Preserve the intended research scope and consult upstream terms before any public redistribution. No permissive license for this code or compilation is granted by the private repository itself.
+Released hashes identify the frozen derived files even when upstream downloads change. Complaint and review narratives are unverified author reports and may include personal information. The exported learning schema excludes user identifiers, but this is not a guarantee of complete de-identification of free text. Preserve the intended research scope and consult upstream terms before any public redistribution. Public repository access does not itself grant a permissive license for this code, compilation or third-party text.

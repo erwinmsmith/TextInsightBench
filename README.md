@@ -2,11 +2,12 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
+
 TextInsightBench evaluates agents that mine natural-language datasets for specific, evidence-backed findings. Agents discover meaningful group differences, changes over time, and compound associations, quantify them, and explain counterexamples and uncertainty.
 
 The benchmark contains **50 tasks**, **24,504 evaluation documents**, and an optional **1,379,468-document unlabeled learning pool**. Every task accepts up to five findings or a reasoned abstention. The evaluation compares claims, observable definitions, document assignments, statistics and exact quotations. Any analysis method is allowed.
 
-This is the private research release of TextInsightBench. English is the primary language of the tasks, documentation and submission examples. Original document text is preserved.
+This is the public research release of TextInsightBench. English is the primary language of the tasks, documentation and submission examples. Original document text is preserved.
 
 ## Repositories
 
@@ -14,9 +15,9 @@ This is the private research release of TextInsightBench. English is the primary
 |---|---|---|
 | Code and usage | [erwinmsmith/TextInsightBench](https://github.com/erwinmsmith/TextInsightBench) | Runner, validator, evaluator, task catalog, scoring rubric |
 | Participant dataset | [CodeSoulco/TextInsightBench](https://huggingface.co/datasets/CodeSoulco/TextInsightBench) | Unlabeled pool, 50 task corpora, schema, checksums |
-| Organizer Reference Set | [CodeSoulco/TextInsightBench-Evaluation](https://huggingface.co/datasets/CodeSoulco/TextInsightBench-Evaluation) | 50 reference conclusions, definitions and supporting context; organizer access only |
+| Organizer Reference Set | [CodeSoulco/TextInsightBench-Evaluation](https://huggingface.co/datasets/CodeSoulco/TextInsightBench-Evaluation) | 50 reference conclusions, definitions and supporting context; openly available evaluation references |
 
-All three repositories are initially private. Participant access must exclude the Organizer Reference Set. A shared organization token may access both datasets; run participant agents in a separate environment with only the participant files mounted.
+All three repositories are public, including the Organizer Reference Set. This is an open-reference benchmark, not a hidden-answer test. Report whether references were accessed during development or evaluation. For reference-blind comparisons, isolate participant execution and deny reference access; public availability still creates contamination risk.
 
 ## Quick start
 
@@ -41,6 +42,8 @@ tib run --data data/participant \
 The bundled agent always abstains. It checks integration, not mining quality. For one task, add `--limit 1` to `tib run`. Successful existing submissions are validated and reused when rerunning the same command and configuration.
 
 ## Connect your agent
+
+For the stricter mining challenge, use `--difficulty hard` consistently in `run`, `validate`, `judge` and `evaluate`, with a new output directory. All 50 tasks then require recomputed metadata-stratified contrasts, largest-stratum removal, support concentration and stronger counterexample evidence. Scores put less weight on basic task completion and more on substantive discovery and robustness. See [difficulty profiles and formulas](docs/DIFFICULTY.md). Standard remains available for compatibility; do not compare scores across profiles.
 
 Implement a command that reads one JSON object from stdin and writes one submission JSON object to stdout. Send logs to stderr. Each task starts a new process. The input contains:
 
@@ -75,9 +78,9 @@ tib validate --data data/participant \
 An organizer downloads references in a separate environment and can immediately produce a structural report:
 
 ```bash
-tib download --organizer --output private/evaluation
+tib download --organizer --output evaluation
 tib evaluate --data data/participant --submissions runs/smoke/submissions \
-  --references private/evaluation/references.json --output runs/smoke/report.json
+  --references evaluation/references.json --output runs/smoke/report.json
 ```
 
 The smoke report has 50 valid abstentions, zero reference coverage, and unavailable finding quality. It does not invent semantic scores.
@@ -86,11 +89,11 @@ For substantive answers, generate semantic assessments using a configured JSON-c
 
 ```bash
 tib judge --data data/participant --submissions runs/my-agent/submissions \
-  --references private/evaluation/references.json --output runs/my-agent/reviews \
+  --references evaluation/references.json --output runs/my-agent/reviews \
   --base-url "$JUDGE_BASE_URL" --model "$JUDGE_MODEL"
 
 tib evaluate --data data/participant --submissions runs/my-agent/submissions \
-  --references private/evaluation/references.json --reviews runs/my-agent/reviews \
+  --references evaluation/references.json --reviews runs/my-agent/reviews \
   --output runs/my-agent/report.json
 ```
 
@@ -100,7 +103,7 @@ tib evaluate --data data/participant --submissions runs/my-agent/submissions \
 
 Finding quality uses a 0–100 rubric: task fulfillment (35), statistical validity (25), evidence entailment (20), analytical depth (10), and calibration (10), multiplied by support. Task scores average submitted findings. Reference coverage is a separate measure: a supported new finding can earn full quality credit even when unmatched.
 
-The [complete scoring standard](docs/SCORING.md) defines gates, partial support, duplicates, abstentions and missing results. The Organizer Reference Set contains AI-generated, non-exhaustive reference conclusions frozen by the maintainer. They are not independently validated. Document-level confirmation annotations are not included or used. References guide coverage; original evidence determines finding quality.
+The [complete scoring standard](docs/SCORING.md) defines gates, partial support, duplicates, abstentions and missing results. The Organizer Reference Set contains reference conclusions that are AI-generated, non-exhaustive and not independently validated. Document-level confirmation annotations are not included or used. References guide coverage; original evidence determines finding quality.
 
 ## Reproducibility and development
 

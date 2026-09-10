@@ -1,5 +1,25 @@
 # Release verification
 
+## Public release and hard profile
+
+The code repository and both Hugging Face datasets are now public, including the
+reference conclusions. Anonymous Hub access was checked. References must not be
+described as hidden answers. Exact current data revisions are pinned in
+`benchmark/data.lock.json`.
+
+- 21 synthetic tests pass, including Simpson reversal, missing metadata, compound
+  jointly-known denominators, forged audit statistics, evidence requirements and
+  cross-profile review rejection.
+- All 50 tasks pass the hard-profile runner and report-generation smoke test:
+  50 valid abstentions, 0 failures, quality null and reference coverage zero.
+- The original corpora and reference conclusions are unchanged. No claim is made
+  that references now validate robustness, or that the same-corpus audit is a new
+  independent holdout.
+- This change has not run a paid participant/judge comparison. The profile has
+  stricter requirements; its empirical difficulty still needs to be measured.
+
+## Historical initial release
+
 The initial release was checked on 2026-09-10. These are engineering checks, not measured mining performance.
 
 | Check | Result |

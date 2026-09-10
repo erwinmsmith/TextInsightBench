@@ -1,6 +1,11 @@
 {
   "version": "textinsightbench",
   "evaluation_unit": "evidence-backed downstream finding",
+  "reference_availability": "public; disclose reference access during development and evaluation",
+  "difficulty_profiles": {
+    "standard": "Original discovery and evidence requirements; finding-quality scoring.",
+    "hard": "Stratification, dominant-stratum sensitivity, support concentration and stronger evidence; finding-quality-robustness scoring. Same corpus and base discovery references, not independent confirmation."
+  },
   "task_families": {
     "group_difference": 20,
     "temporal_change": 15,

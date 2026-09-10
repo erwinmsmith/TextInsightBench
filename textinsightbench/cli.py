@@ -10,9 +10,10 @@ from pathlib import Path
 
 from .core import read, write, digest, file_sha, load_tasks, load_corpus, load_references, validate_submission
 from .evaluation import score, aggregate, DIMENSIONS
+from .difficulty import apply_profile, audit, scoring_version, HARD_JUDGE_INSTRUCTIONS, PROFILES
 
 
-def selected(root, task_id=None, limit=None):
+def selected(root, task_id=None, limit=None, difficulty='standard'):
     tasks = load_tasks(root)
     if task_id:
         tasks = [t for t in tasks if t['task_id'] == task_id]
@@ -20,7 +21,7 @@ def selected(root, task_id=None, limit=None):
             raise ValueError('Unknown task ID')
     if limit is not None and limit < 1:
         raise ValueError('Limit must be positive')
-    return tasks[:limit] if limit else tasks
+    return [apply_profile(t, difficulty) for t in (tasks[:limit] if limit else tasks)]
 
 
 def verify(root, require_pool=False):
@@ -67,6 +68,10 @@ def run_agent(args):
     manifest = {'tasks_sha256': file_sha(root / 'tasks.json'), 'command': argv,
                 'track': args.track, 'timeout_seconds': args.timeout,
                 'task_id': args.task_id, 'limit': args.limit}
+    difficulty = getattr(args, 'difficulty', 'standard')
+    if difficulty != 'standard':
+        manifest['difficulty'] = difficulty
+        manifest['effective_tasks_sha256'] = digest(selected(root, difficulty=difficulty))
     output.mkdir(parents=True, exist_ok=True)
     run_path = output / 'run.json'
     if run_path.exists():
@@ -78,7 +83,7 @@ def run_agent(args):
         verify(root, True)
     env = {k: v for k, v in os.environ.items() if k not in ('HF_TOKEN', 'HUGGING_FACE_HUB_TOKEN', 'JUDGE_API_KEY')}
     counts = {'completed': 0, 'reused': 0, 'failed': 0}
-    for task in selected(root, args.task_id, args.limit):
+    for task in selected(root, args.task_id, args.limit, difficulty):
         rows = load_corpus(root, task)
         path = output / (task['task_id'] + '.json')
         if path.exists():
@@ -134,10 +139,17 @@ def judge(args):
     refs, by_ref = load_references(args.references, root)
     ref_sha = file_sha(args.references)
     system = Path(__file__).with_name('judge.txt').read_text()
+    difficulty = getattr(args, 'difficulty', 'standard')
+    if difficulty == 'hard':
+        system += HARD_JUDGE_INSTRUCTIONS
     output.mkdir(parents=True, exist_ok=True)
     judge_config = {'model': args.model, 'base_url': args.base_url, 'system_sha256': digest(system),
                     'reference_sha256': ref_sha, 'tasks_sha256': file_sha(root / 'tasks.json'),
                     'max_output_tokens': args.max_output_tokens, 'max_input_chars': args.max_input_chars}
+    if difficulty != 'standard':
+        judge_config['difficulty'] = difficulty
+        judge_config['effective_tasks_sha256'] = digest(selected(root, difficulty=difficulty))
+    check_run_profile(submissions, difficulty)
     config_path = output / 'judge_config.json'
     if config_path.exists():
         if read(config_path) != judge_config:
@@ -145,7 +157,7 @@ def judge(args):
     else:
         write(config_path, judge_config)
     errors = 0
-    for task in selected(root, args.task_id, args.limit):
+    for task in selected(root, args.task_id, args.limit, difficulty):
         tid = task['task_id']
         source = submissions / (tid + '.json')
         if not source.exists():
@@ -162,13 +174,18 @@ def judge(args):
             if not sub['findings']:
                 print(json.dumps({'task_id': tid, 'status': 'abstained', 'api_calls': 0}), flush=True)
                 continue
-            quality, q_receipt = request_json(args, system, {'task': task, 'documents': rows, 'submission': sub})
+            payload = {'task': task, 'documents': rows, 'submission': sub}
+            if difficulty == 'hard':
+                payload['robustness_audits'] = {f['finding_id']: audit(f, task, rows)[1] for f in sub['findings']}
+            quality, q_receipt = request_json(args, system, payload)
             if set(quality) != {'findings'} or any(r.get('reference_match') is not None for r in quality['findings']):
                 raise ValueError('Quality stage must not assign reference matches')
             review = {'task_id': tid, 'submission_sha256': digest(sub), 'corpus_sha256': task['corpus_sha256'],
-                'reference_sha256': ref_sha, 'scoring_version': 'finding-quality',
+                'reference_sha256': ref_sha, 'scoring_version': scoring_version(task),
                 'reviewer_method': args.base_url + ' / ' + args.model,
                 'findings': quality['findings'], 'provider_receipts': [q_receipt]}
+            if difficulty == 'hard':
+                review['task_sha256'] = digest(task)
             # Validate before invoking the separate reference matching stage.
             score(sub, task, rows, by_ref[tid], review, ref_sha)
             eligible = [f for f in sub['findings'] if any(r['finding_id'] == f['finding_id'] and r['support'] == 'supported' and r['task_fulfilled'] and r['duplicate_of'] is None for r in quality['findings'])]
@@ -195,9 +212,17 @@ def judge(args):
         raise SystemExit(1)
 
 
+def check_run_profile(submissions, difficulty):
+    path = Path(submissions) / 'run.json'
+    if path.exists() and read(path).get('difficulty', 'standard') != difficulty:
+        raise ValueError('Submission run difficulty differs from the requested evaluation profile')
+
+
 def evaluate(args):
     root, submissions = Path(args.data), Path(args.submissions)
-    tasks = load_tasks(root)
+    difficulty = getattr(args, 'difficulty', 'standard')
+    tasks = selected(root, difficulty=difficulty)
+    check_run_profile(submissions, difficulty)
     refs, by_ref = load_references(args.references, root)
     ref_sha = file_sha(args.references)
     records = []
@@ -236,6 +261,7 @@ def evaluate(args):
     write(args.output, report)
     markdown = '# TextInsightBench evaluation\n\n'
     markdown += 'Version: ' + refs['benchmark_version'] + '\n\n'
+    markdown += 'Difficulty: ' + difficulty + '\n\n'
     markdown += '| Metric | Value |\n|---|---:|\n'
     for key in ('tasks', 'scored_tasks', 'quality_mean', 'conditional_quality_mean', 'reference_coverage_mean', 'valid_submission_rate', 'abstention_rate', 'pending_tasks', 'missing_tasks', 'invalid_tasks'):
         markdown += f'| {key} | {report[key]} |\n'
@@ -269,19 +295,22 @@ def main():
     p.add_argument('--command', required=True)
     p.add_argument('--output', required=True)
     p.add_argument('--track', choices=('task_only', 'unlabeled_pool'), default='task_only')
+    p.add_argument('--difficulty', choices=PROFILES, default='standard')
     p.add_argument('--timeout', type=int, default=900)
     p.add_argument('--task-id')
     p.add_argument('--limit', type=int)
     p.set_defaults(func=run_agent)
     p = commands.add_parser('validate')
+    p.add_argument('--difficulty', choices=PROFILES, default='standard')
     p.add_argument('--data', required=True)
     p.add_argument('--submission', required=True)
     def validate_one(a):
         sub = read(a.submission)
-        task = selected(a.data, sub['task_id'])[0]
+        task = selected(a.data, sub['task_id'], difficulty=a.difficulty)[0]
         print(json.dumps(validate_submission(sub, task, load_corpus(a.data, task))))
     p.set_defaults(func=validate_one)
     p = commands.add_parser('judge')
+    p.add_argument('--difficulty', choices=PROFILES, default='standard')
     p.add_argument('--data', required=True)
     p.add_argument('--submissions', required=True)
     p.add_argument('--references', required=True)
@@ -296,6 +325,7 @@ def main():
     p.add_argument('--limit', type=int)
     p.set_defaults(func=judge)
     p = commands.add_parser('evaluate')
+    p.add_argument('--difficulty', choices=PROFILES, default='standard')
     p.add_argument('--data', required=True)
     p.add_argument('--submissions', required=True)
     p.add_argument('--references', required=True)

@@ -5,6 +5,7 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 from .validation import expected, validate
+from .difficulty import validate_evidence
 
 
 def read(path):
@@ -55,6 +56,7 @@ def validate_submission(sub, task, rows):
     Draft202012Validator(schema).validate(sub)
     validate(sub, task, rows)
     for f in sub['findings']:
+        validate_evidence(f, task)
         if set(f['statistics']) != set(expected(f, task, rows)):
             raise ValueError('Statistics must contain exactly the documented computed fields')
         spans = [(e['doc_id'], e['start'], e['end']) for e in f['evidence']]
