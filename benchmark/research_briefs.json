@@ -1,0 +1,84 @@
+{
+  "amazon_beauty": {
+    "group_difference": [
+      ["use_context", "Discover a non-obvious difference in how use context changes reported product performance; distinguish context from overall satisfaction."],
+      ["expectation_gaps", "Discover where expectations and reported experience diverge differently across defensible populations; explain the practical consequence."],
+      ["failure_concentration", "Find a specific failure pattern whose concentration across populations is obscured by overall review volume."],
+      ["adaptation", "Discover a difference in consumer adaptation or workarounds and examine whether apparent success masks recurring limitations."],
+      ["durability_tradeoffs", "Find a population-dependent tradeoff between immediate experience and continued usefulness without equating star ratings with the mechanism."]
+    ],
+    "temporal_change": [
+      ["experience_shift", "Discover a meaningful shift in the substance of reported experiences and locate a defensible time boundary; test a composition explanation."],
+      ["emerging_friction", "Find an emerging or receding usage friction, distinguishing a change in its prevalence from changes in review volume."],
+      ["expectation_evolution", "Investigate how an observable expectation-experience mismatch changes over time; explain alternative reasons for the apparent shift."],
+      ["persistence", "Discover a change in a recurring product limitation and assess whether it is broad or driven by a concentrated product mix."]
+    ],
+    "compound_association": [
+      ["tradeoff_coupling", "Discover a useful association between two distinct reported experiences that reveals a practical product tradeoff."],
+      ["context_response", "Find a context-response relationship in the text and distinguish it from two descriptions of the same event."],
+      ["failure_recovery", "Discover a relationship between an observed difficulty and a distinct response or recovery experience; inspect discordant cases."],
+      ["expectation_behavior", "Find a nontrivial link between an observable expectation and a subsequent reported behavior without treating co-occurrence as causation."]
+    ]
+  },
+  "app_reviews": {
+    "group_difference": [
+      ["workflow_disruption", "Discover how a specific workflow disruption differs across defensible user or application populations."],
+      ["access_barriers", "Find a non-obvious disparity in a concrete barrier to successful use; distinguish the barrier from generic dissatisfaction."],
+      ["adaptation_cost", "Discover a difference in workarounds or adaptation burdens and investigate whether application mix explains it."],
+      ["promise_experience", "Find where promised or expected utility diverges from reported practical utility across populations."],
+      ["failure_impact", "Discover a difference in the consequences of a recurring failure pattern, not merely which population gives lower ratings."]
+    ],
+    "temporal_change": [
+      ["workflow_evolution", "Discover a time-local change in workflow experience; choose and justify the boundary and investigate application composition."],
+      ["regression_pattern", "Find a substantive emerging or receding failure pattern without assuming any release date or assigning an unsupported cause."],
+      ["utility_shift", "Discover a change in how people describe realized utility, separating prevalence from changing document volume."],
+      ["recovery_shift", "Investigate a temporal change in reported recovery or adaptation; establish the scope of the observed change."]
+    ],
+    "compound_association": [
+      ["friction_response", "Discover a relationship between a concrete usage friction and a distinct user response; analyze counterexamples."],
+      ["utility_tradeoff", "Find two distinct experiences whose association reveals a non-obvious utility tradeoff."],
+      ["context_failure", "Discover an association between a stated usage context and a specific failure or success experience."],
+      ["recovery_limit", "Find a relationship between attempted recovery and a separately defined limitation; avoid defining one condition by the other."]
+    ]
+  },
+  "cfpb": {
+    "group_difference": [
+      ["resolution_burden", "Discover how a specific burden in pursuing resolution differs across defensible complaint populations."],
+      ["process_breakdown", "Find a disparity in an observable procedural breakdown; distinguish process from generic negative sentiment."],
+      ["downstream_impact", "Discover a population-dependent difference in a concrete downstream consequence described in narratives."],
+      ["recurrence", "Find where a recurring problem differs across populations and examine whether reporting composition explains the contrast."],
+      ["information_asymmetry", "Discover a difference in an observable information or communication barrier and explain its practical implications."]
+    ],
+    "temporal_change": [
+      ["process_shift", "Discover a shift in an observable complaint-handling experience, selecting a defensible time boundary without assuming policy causation."],
+      ["burden_shift", "Find an emerging or declining resolution burden and assess whether company composition explains the trend."],
+      ["impact_shift", "Discover a change in a concrete reported consequence, separating narrative prevalence from complaint volume."],
+      ["recurrence_shift", "Investigate a temporal change in repeated or unresolved experiences and identify limits on its interpretation."]
+    ],
+    "compound_association": [
+      ["process_consequence", "Discover an association between a specific procedural experience and a distinct consequence in complaint narratives."],
+      ["response_recurrence", "Find a nontrivial relationship between an observable response and recurrence or persistence, inspecting discordant narratives."],
+      ["barrier_behavior", "Discover a relationship between an information barrier and a distinct consumer action; separate association from explanation."]
+    ]
+  },
+  "nhtsa": {
+    "group_difference": [
+      ["operating_context", "Discover a population-dependent difference in a failure experience under a concrete operating context; do not infer vehicle incidence rates."],
+      ["warning_gap", "Find a disparity in observable warning or detectability experiences and assess vehicle-composition explanations."],
+      ["repair_persistence", "Discover a difference in recurrence or persistence following attempted remedy, supported by narrative evidence."],
+      ["functional_impact", "Find a non-obvious population difference in functional consequences rather than merely counting complaints."],
+      ["adaptation_burden", "Discover a difference in driver adaptation or workaround burdens and identify where the contrast stops generalizing."]
+    ],
+    "temporal_change": [
+      ["experience_shift", "Discover a meaningful shift in a specific reported failure experience and test vehicle-age or composition alternatives."],
+      ["remedy_shift", "Find a temporal change in reported remedy or recurrence experiences; select the date boundary and justify its interpretation."],
+      ["context_shift", "Discover a change in context-dependent functional consequences without treating complaint dates as failure incidence."]
+    ],
+    "compound_association": [
+      ["context_consequence", "Discover a relationship between an operating context and a distinct functional consequence; examine discordant reports."],
+      ["warning_response", "Find an association between a warning experience and a separate driver or service response, avoiding circular definitions."],
+      ["remedy_recurrence", "Discover a relationship between an attempted remedy and a separately defined persistence pattern without inferring treatment efficacy."],
+      ["coupled_failures", "Find two distinct reported experiences whose association suggests a useful investigation priority, not a proven mechanical cause."]
+    ]
+  }
+}

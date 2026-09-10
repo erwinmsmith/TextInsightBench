@@ -37,8 +37,12 @@ def base_expected(f,task,data):
         'conditional_difference_pp':100*(p1-p0) if None not in (p1,p0) else None,'lift':n11*n/((n11+n10)*(n11+n01)) if (n11+n10)*(n11+n01) else None}
 
 def expected(f,task,data):
+    from .discovery import context, is_discovery
+    original=task;total=len(data);task,data=context(f,task,data)
     out=base_expected(f,task,data)
-    if task.get('difficulty')=='hard':
+    if is_discovery(original):
+        out.update(corpus_total_n=total,population_total_n=len(data),population_coverage=len(data)/total)
+    if task.get('difficulty') in ('hard','discovery'):
         from .difficulty import audit
         out.update(audit(f,task,data)[0])
     return out
@@ -49,7 +53,12 @@ def validate(sub,task,data):
     need(isinstance(sub['abstention_reason'],str) and (sub['findings'] or sub['abstention_reason'].strip()),'empty answer')
     universe={r['doc_id'] for r in data};lookup={r['doc_id']:r for r in data};ids=set()
     for f in sub['findings']:
-        need(set(f)=={'finding_id','claim','kind','scope','definitions','assignments','statistics','evidence','limitations'},'invalid finding fields')
+        from .discovery import context,is_discovery
+        fields={'finding_id','claim','kind','scope','definitions','assignments','statistics','evidence','limitations'}
+        if is_discovery(task):fields.update(('population','comparison'))
+        need(set(f)==fields,'invalid finding fields')
+        _,selected=context(f,task,data)
+        universe={r['doc_id'] for r in selected};lookup={r['doc_id']:r for r in selected}
         need(f['finding_id'] not in ids and f['kind']==task['kind'],'duplicate finding or wrong kind');ids.add(f['finding_id'])
         need(all(isinstance(f[k],str) and f[k].strip() for k in ('finding_id','claim','scope')),'empty finding text')
         want=2 if task['kind']=='compound_association' else 1;need(len(f['definitions'])==len(f['assignments'])==want,'wrong condition count')

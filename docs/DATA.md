@@ -1,43 +1,45 @@
-# Data and tasks
+# Data and task composition
 
-| Source | Learning documents | Tasks | Evaluation documents |
+| Source | Tasks | Task documents | Remaining learning documents |
 |---|---:|---:|---:|
-| Amazon Reviews'23 All Beauty | 460,885 | 13 | 6,421 |
-| Android App Reviews | 66,660 | 13 | 5,484 |
-| CFPB complaints | 603,788 | 12 | 6,300 |
-| NHTSA complaints | 248,135 | 12 | 6,299 |
-| Total | 1,379,468 | 50 | 24,504 |
+| amazon_beauty | 13 | 130,000 | 330,885 |
+| app_reviews | 13 | 65,000 | 1,660 |
+| cfpb | 12 | 120,000 | 483,788 |
+| nhtsa | 12 | 120,000 | 128,135 |
+| Total | 50 | 435,000 | 944,468 |
 
-Learning documents occupy 278 Parquet shards. They contain only `doc_id`, `source`, `text`, and `title`. No benchmark annotation labels are supplied. Use them for unsupervised learning, representation building, retrieval indexing or corpus exploration before running evaluation tasks.
+There are 20 group differences, 15 temporal changes and 15 compound associations.
+Each source's corpus is deterministically divided into disjoint research cohorts.
+The 50 briefs in `benchmark/research_briefs.json` express distinct investigation
+objectives, not predefined answers. Broad objectives can overlap conceptually.
 
-Evaluation corpora are 50 gzip-compressed JSON Lines files, with 263–600 documents per task (median 500). Documents retain text, ID and the metadata needed for each comparison, including entity, rating, report timestamp and group when applicable. Ratings and groups are observed input metadata, not hidden answer labels. The 50 corpora have distinct document IDs. Corpus-local analysis is allowed in both tracks.
+Task corpora are gzip JSONL. Common fields are doc_id, source, text, title,
+timestamp, timestamp_kind, entity_id, entity_name, category and rating. Available
+nonconstant source metadata may include state, make, model_year and store.
+report_year is derived from timestamp. Only task.allowed_metadata_fields can be
+used for population filters and metadata group selection. Free text remains
+untrusted author reports; timestamp describes the released date kind, not
+necessarily incident time. Null metadata is preserved.
 
-| Task family | Tasks | Required downstream analysis |
-|---|---:|---|
-| `group_difference` | 20 | Discover a concrete reported experience that differs across the named groups; quantify both denominators and inspect composition |
-| `temporal_change` | 15 | Discover a specific reporting pattern that changes across the cutoff; distinguish report dates from event dates |
-| `compound_association` | 15 | Discover two observable conditions with a meaningful within-document association; provide the complete joint table |
+The optional learning pool has 278 Parquet shards containing doc_id, source, text
+and title, with no annotations. App Reviews has a small remaining learning pool;
+source-balanced training is not implied. Evaluation documents were selected from
+a previously public curated learning snapshot. They are NOT guaranteed unseen.
+Current task IDs and learning IDs are disjoint; the curated input's normalized
+and conservative-template deduplication policy is inherited. Shared entities,
+authors and sources can remain; document separation is not independence.
 
-The task question does not disclose the organizer reference condition. A specific answer may be discovered by any analysis method. Each finding must go beyond broad categories or generic sentiment.
+Rebuild from the exact curated input and normalized source metadata:
 
-## Files
-
-```text
-tasks.json                 50 task specifications
-corpora/*.jsonl.gz         Task-specific evaluation inputs
-learning/<source>/*.parquet
-output.schema.json         Required submission structure
-protocol.json              Tracks, inference scope and adaptation rules
-manifest.json              SHA-256 and byte sizes
-release.json               Counts and version
-README.md / README.zh-CN.md Dataset cards
-SOURCES.md                 Attribution and source terms
+```bash
+python scripts/rebuild_benchmark.py --pool /path/to/input/learning \
+  --processed /path/to/normalized --output /new/output/directory
 ```
 
-Each `tasks.json` entry includes `task_id`, `source`, `kind`, `scope_name`, `question`, `comparison`, `n_documents`, `max_findings`, `corpus_path`, `corpus_sha256`, `output_contract`, `selection_scope`, and `dependence_block`. IDs are stable across packaging updates.
-
-## Sampling and overlap
-
-The pool was curated from the downloaded source snapshots using English filtering, length constraints and deduplication. The CFPB pool is restricted to the 2024–2025 credit-reporting selection. The pool's original holdouts include pilot task corpora. For this dataset, every exported shard was checked again against current evaluation and reference-development documents using document IDs, normalized text hashes and a conservative template hash that collapses digits and punctuation. No additional removals were required.
-
-This check is narrower than arbitrary semantic deduplication. Shared products, companies, apps, entities and source collection procedures remain. Source complaints and ratings are selected reports and do not measure population incidence. The benchmark is predominantly English; language filtering is imperfect. Original spelling and HTML fragments are retained to keep evidence offsets stable.
+The builder requires a new output directory, records hashes of input shards and
+research briefs, and never invents reference annotations. Normalized inputs must
+have the schema used in the script; this is not an upstream raw-download parser.
+Released files and their manifest are sufficient to run the benchmark without
+reconstruction. Data provenance, source eligibility and redistribution terms are
+described in [SOURCES.md](SOURCES.md). Do not infer incidence rates for products,
+vehicles or the wider population from these sampled reports.

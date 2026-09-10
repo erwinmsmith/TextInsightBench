@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Evidence-backed finding submission v1",
+  "title": "Evidence-backed mining submission",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -41,6 +41,26 @@
         "limitations"
       ],
       "properties": {
+        "population": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["filters"],
+          "properties": {
+            "filters": {
+              "type": "array", "maxItems": 3,
+              "items": {
+                "type": "object", "additionalProperties": false,
+                "required": ["field", "op", "value"],
+                "properties": {
+                  "field": {"type": "string"},
+                  "op": {"enum": ["eq", "in", "gte", "lte"]},
+                  "value": {"type": ["string", "number", "array"]}
+                }
+              }
+            }
+          }
+        },
+        "comparison": {"type": ["object", "null"]},
         "finding_id": {
           "type": "string",
           "minLength": 1

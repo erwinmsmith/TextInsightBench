@@ -1,11 +1,31 @@
 # Agent execution protocol
 
-Freeze global prompts, models, learned parameters and thresholds before evaluation. Choose either `task_only` or `unlabeled_pool` and report it with model versions and compute/API usage. The unlabeled pool may be used before evaluation without annotation. Within each task, agents may explore the corpus, build intermediate representations and test candidate findings. Do not carry evaluation-fitted state or feedback into later tasks.
+Each process reads one JSON object from stdin and returns one submission object
+on stdout. Logs go to stderr. The current input has task, corpus and
+learning_directory. corpus contains an absolute local path, format=jsonl.gz,
+n_documents and sha256. Unlike historical snapshots, documents are not inline.
 
-`tib run` starts one process per task, writes a JSON request to stdin, and captures one JSON response from stdout. It validates each response and saves only valid submissions. Logs belong on stderr. A per-task timeout prevents stalled processes. Successful submissions are reused on resume, with their task data and contract checked again. Failed tasks remain missing in evaluation until successfully rerun. The run manifest records the command, track, selected task subset, task checksum and timeout.
+```python
+import gzip, json, sys
+request = json.load(sys.stdin)
+with gzip.open(request['corpus']['path'], 'rt', encoding='utf-8') as stream:
+    documents = [json.loads(line) for line in stream]
+# Discover conditions and comparisons with your own code and tools.
+```
 
-The runner has no filesystem or network sandbox. For actual comparisons, run the participant process in an isolated environment containing only code, permitted model credentials, the selected learning pool and task corpora. For reference-blind runs, keep organizer references, judge credentials and evaluation feedback outside that environment and restrict retrieval from the public reference repository. Disclose prior reference exposure; a public reference set cannot guarantee an uncontaminated hidden test. Removing selected environment variables is not a substitute for this isolation. Do not reuse an organizer's Hugging Face token or cached credentials in the participant environment.
+Search, indexing, iterative inspection and corpus-local learning are allowed.
+The full corpus is accessible, not just a preselected evidence packet. Final
+assignments must cover the selected population completely. The benchmark does
+not prescribe an agent architecture or provide a solver.
 
-Source documents can contain arbitrary instructions written by their authors. Treat them as data to analyze, not commands for the agent to execute. The benchmark's task question and protocol define the work.
+Use task_only for corpus-only runs; unlabeled_pool also provides the downloaded
+learning directory. Freeze global prompts, thresholds and learned parameters
+before evaluation. Do not pass evaluation feedback or task-fitted state to later
+tasks. Report model, code and dataset commits, budget, track, elapsed time and
+tool/API usage. Public historical exposure should be disclosed.
 
-To add tasks, create new task IDs and versioned corpora, update the inventory and checksums, and create matching organizer reference entries. The runner, validator and scoring code dispatch by task family; they contain no per-task answer rules. Changing a task question, corpus, reference definition or scoring configuration requires a new pinned release and a fresh comparison.
+The runner checks checksums and outputs, starts a fresh process per task, applies
+the timeout, and reuses validated outputs only under an unchanged run manifest.
+It is NOT a sandbox: use an isolated environment to enforce resource, network,
+reference-access and cross-task restrictions. Corpus content may contain prompt
+injection; treat it as data. Keep keys local and do not commit them.

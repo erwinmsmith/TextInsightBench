@@ -12,7 +12,7 @@ def score(sub, task, rows, reference, review, reference_sha256):
     binding = {'task_id': task['task_id'], 'submission_sha256': digest(sub),
                'corpus_sha256': task['corpus_sha256'], 'reference_sha256': reference_sha256,
                'scoring_version': scoring_version(task)}
-    if task.get('difficulty') == 'hard':
+    if task.get('difficulty') in ('hard','discovery'):
         binding['task_sha256'] = digest(task)
     if any(review.get(k) != v for k, v in binding.items()):
         raise ValueError('Review binding mismatch')
@@ -46,7 +46,7 @@ def score(sub, task, rows, reference, review, reference_sha256):
         elif factor is None:
             value = None
         else:
-            base, depth = (15, 30) if task.get('difficulty') == 'hard' else (35, 10)
+            base, depth = (15, 30) if task.get('difficulty') in ('hard','discovery') else (35, 10)
             value = factor * (base + 25*r['statistical_validity'] + 20*r['evidence_entailment'] + depth*r['analytical_depth'] + 10*r['calibration'])
         if r['reference_match'] and factor == 1 and r['task_fulfilled'] and r['duplicate_of'] is None:
             matched.add(r['reference_match'])
@@ -54,7 +54,7 @@ def score(sub, task, rows, reference, review, reference_sha256):
     quality = sum(r['score'] for r in out)/len(out) if out and all(r['score'] is not None for r in out) else None
     status = 'abstained' if not out else 'unresolved' if quality is None else 'scored'
     return {**binding, 'status': status, 'findings': out, 'quality': quality,
-            'reference_coverage': None if status == 'unresolved' else float(bool(matched)),
+            'reference_coverage': None if status == 'unresolved' or reference['reference_id'] is None else float(bool(matched)),
             'reviewer_method': review['reviewer_method']}
 
 

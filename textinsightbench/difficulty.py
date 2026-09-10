@@ -13,6 +13,8 @@ MIN_KNOWN_PER_ARM = 5
 
 
 def scoring_version(task):
+    if task.get('difficulty') == 'discovery':
+        return 'finding-quality-discovery'
     return 'finding-quality-robustness' if task.get('difficulty') == 'hard' else 'finding-quality'
 
 
@@ -20,6 +22,10 @@ def apply_profile(task, difficulty='standard'):
     if difficulty not in PROFILES:
         raise ValueError('Unknown difficulty profile')
     task = copy.deepcopy(task)
+    if task.get('difficulty') == 'discovery':
+        if difficulty != 'standard':
+            raise ValueError('Current discovery tasks already use the full challenge; omit --difficulty')
+        return task
     if difficulty == 'standard':
         return task
     task['difficulty'] = 'hard'
@@ -79,6 +85,8 @@ def effect(g0, g1, positive):
 
 def audit(finding, task, data):
     """Recompute every audit from the submitted assignments and released metadata."""
+    from .discovery import context
+    task, data = context(finding, task, data)
     g0, g1, positive = arms(finding, task, data)
     universe = {r['doc_id'] for r in data}
     common = {'robustness_known_arm0_n': len(g0), 'robustness_known_arm1_n': len(g1)}
@@ -130,7 +138,7 @@ def audit(finding, task, data):
 
 
 def validate_evidence(finding, task):
-    if task.get('difficulty') != 'hard':
+    if task.get('difficulty') not in ('hard','discovery'):
         return
     by_id = {a['condition_id']: a for a in finding['assignments']}
     assignments = [by_id[d['condition_id']] for d in finding['definitions']]

@@ -1,1215 +1,1452 @@
 [
   {
-    "task_id": "amazon_beauty_group_difference_hair_tools_midrating",
+    "task_id": "amazon_beauty_group_difference_use_context",
     "source": "amazon_beauty",
     "kind": "group_difference",
-    "scope_name": "hair tools and brushes",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "rating_4_5",
-        "rating_3"
-      ]
-    },
-    "question": "Within hair tools and brushes, investigate substantive differences in reported experiences between rating_4_5 and rating_3. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 373,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_group_difference_hair_tools_midrating.jsonl.gz",
-    "corpus_sha256": "7bf3a1c9537c78e0b6cf1beee22908d19fcef3ed815f79857a8df0494adb9910",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "hair_tools"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Discover a non-obvious difference in how use context changes reported product performance; distinguish context from overall satisfaction. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_group_difference_use_context.jsonl.gz",
+    "corpus_sha256": "6785025adfdb510a0bf69a5845e0f9d8cb9a452f673fa3b71a90e1e21d417d2e",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_group_difference_hair_tools",
+    "task_id": "amazon_beauty_group_difference_expectation_gaps",
     "source": "amazon_beauty",
     "kind": "group_difference",
-    "scope_name": "hair tools and brushes",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "rating_4_5",
-        "rating_1_2"
-      ]
-    },
-    "question": "Within hair tools and brushes, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_group_difference_hair_tools.jsonl.gz",
-    "corpus_sha256": "0603e2eb2807b292830d973eb385dcd0ba95a390af6f5dd0f7415efe73732db3",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "hair_tools"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Discover where expectations and reported experience diverge differently across defensible populations; explain the practical consequence. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_group_difference_expectation_gaps.jsonl.gz",
+    "corpus_sha256": "3440fd78c7249b974cd529a533c6944de8844ff508210e88e25cb4941ca12001",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_group_difference_nails",
+    "task_id": "amazon_beauty_group_difference_failure_concentration",
     "source": "amazon_beauty",
     "kind": "group_difference",
-    "scope_name": "nail-care products",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "rating_4_5",
-        "rating_1_2"
-      ]
-    },
-    "question": "Within nail-care products, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_group_difference_nails.jsonl.gz",
-    "corpus_sha256": "04ffe62594b4d0abe15710fd717ebeefac4e45e6f445bde27bfb1059bc8293ae",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "nails"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Find a specific failure pattern whose concentration across populations is obscured by overall review volume. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_group_difference_failure_concentration.jsonl.gz",
+    "corpus_sha256": "a175d794cdb8b49efff320ec98eacead5ccbd46312086577e1c3b3c47ef825dc",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_group_difference_skin",
+    "task_id": "amazon_beauty_group_difference_adaptation",
     "source": "amazon_beauty",
     "kind": "group_difference",
-    "scope_name": "skin-care and cleansing products",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "rating_4_5",
-        "rating_1_2"
-      ]
-    },
-    "question": "Within skin-care and cleansing products, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_group_difference_skin.jsonl.gz",
-    "corpus_sha256": "e1443c24e6fce8201361c340d320ea4042617f4382ab253a9a8d207c4d45d029",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "skin"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Discover a difference in consumer adaptation or workarounds and examine whether apparent success masks recurring limitations. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_group_difference_adaptation.jsonl.gz",
+    "corpus_sha256": "716a311328ed1ddde2499e631e049f4cf6bbdc250cdd6ab56a0b87ab13b3e1c0",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_group_difference_makeup",
+    "task_id": "amazon_beauty_group_difference_durability_tradeoffs",
     "source": "amazon_beauty",
     "kind": "group_difference",
-    "scope_name": "makeup products",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "rating_4_5",
-        "rating_1_2"
-      ]
-    },
-    "question": "Within makeup products, investigate substantive differences in reported experiences between rating_4_5 and rating_1_2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_group_difference_makeup.jsonl.gz",
-    "corpus_sha256": "25e5a34896f27ed3a86e054808c1ac3823d24dc0815f915e37d2c358a94932e5",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "makeup"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Find a population-dependent tradeoff between immediate experience and continued usefulness without equating star ratings with the mechanism. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_group_difference_durability_tradeoffs.jsonl.gz",
+    "corpus_sha256": "b0a90336494c58026737a6ecb734e3cd9418d39deda7e1169647def0fff21a34",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_temporal_change_grooming",
+    "task_id": "amazon_beauty_temporal_change_experience_shift",
     "source": "amazon_beauty",
     "kind": "temporal_change",
-    "scope_name": "shaving and grooming products",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2019-03-04",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within shaving and grooming products, investigate changes in reported experiences before versus on/after 2019-03-04. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_temporal_change_grooming.jsonl.gz",
-    "corpus_sha256": "fc74044946083aeaa6d18a49b2174dafeb55ac72d264db09698c778db3226b9c",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "grooming"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Discover a meaningful shift in the substance of reported experiences and locate a defensible time boundary; test a composition explanation. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_experience_shift.jsonl.gz",
+    "corpus_sha256": "3acea0c3c632ae53a0b8216303f5e762e5c6c4d875cae0cd41ad37e5f5d6f279",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_temporal_change_fragrance",
+    "task_id": "amazon_beauty_temporal_change_emerging_friction",
     "source": "amazon_beauty",
     "kind": "temporal_change",
-    "scope_name": "fragrances",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2020-04-03",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within fragrances, investigate changes in reported experiences before versus on/after 2020-04-03. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 332,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_temporal_change_fragrance.jsonl.gz",
-    "corpus_sha256": "f0b8ef66e8475ee334f68cef89c225aba9bc27d25a23b68a704e67c42bea8be4",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "fragrance"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Find an emerging or receding usage friction, distinguishing a change in its prevalence from changes in review volume. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_emerging_friction.jsonl.gz",
+    "corpus_sha256": "0fdad3186e8869d20df3ba9bd4c8e20b107a7738b3bc0bc26e051047f1342445",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_temporal_change_skin",
+    "task_id": "amazon_beauty_temporal_change_expectation_evolution",
     "source": "amazon_beauty",
     "kind": "temporal_change",
-    "scope_name": "skin-care and cleansing products",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2019-01-08",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within skin-care and cleansing products, investigate changes in reported experiences before versus on/after 2019-01-08. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_temporal_change_skin.jsonl.gz",
-    "corpus_sha256": "a599b62a475936e0a2dd9463750221c26e0d93ebad93007ddb0eee4c44e1c0a9",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "skin"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Investigate how an observable expectation-experience mismatch changes over time; explain alternative reasons for the apparent shift. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_expectation_evolution.jsonl.gz",
+    "corpus_sha256": "5c7a2e89ef64887d6c595c9c934ebcf74f49443cd668e6a24f81e63d4af90ba2",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_temporal_change_hair_tools",
+    "task_id": "amazon_beauty_temporal_change_persistence",
     "source": "amazon_beauty",
     "kind": "temporal_change",
-    "scope_name": "hair tools and brushes",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2019-09-07",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within hair tools and brushes, investigate changes in reported experiences before versus on/after 2019-09-07. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_temporal_change_hair_tools.jsonl.gz",
-    "corpus_sha256": "97692f42b1bd3360e0dc566f43bdbd98eb32eff99ad31ac3176bda62c72083b6",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "hair_tools"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Discover a change in a recurring product limitation and assess whether it is broad or driven by a concentrated product mix. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_temporal_change_persistence.jsonl.gz",
+    "corpus_sha256": "dc970fad8c52af79bdeeae49c5de9ad9f584df1df305d5e6f9d1e516208f18fe",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_compound_association_hair_care",
+    "task_id": "amazon_beauty_compound_association_tradeoff_coupling",
     "source": "amazon_beauty",
     "kind": "compound_association",
-    "scope_name": "hair-care products",
-    "comparison": null,
-    "question": "Within hair-care products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 416,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_compound_association_hair_care.jsonl.gz",
-    "corpus_sha256": "e4eddaf50a700ed6094f04ddc99568ab903792ac52c5e08a55e4f6cbf778336d",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "hair_care"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Discover a useful association between two distinct reported experiences that reveals a practical product tradeoff. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_compound_association_tradeoff_coupling.jsonl.gz",
+    "corpus_sha256": "c04589fdea1fa2c7d149c79fdfcd067279ed7e00035e97281deaa34b0055ac21",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_compound_association_nails",
+    "task_id": "amazon_beauty_compound_association_context_response",
     "source": "amazon_beauty",
     "kind": "compound_association",
-    "scope_name": "nail-care products",
-    "comparison": null,
-    "question": "Within nail-care products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_compound_association_nails.jsonl.gz",
-    "corpus_sha256": "d63dab5181db0e3247ff20c5b7081a15f55e892e19447efb79ff1c45f84173aa",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "nails"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Find a context-response relationship in the text and distinguish it from two descriptions of the same event. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_compound_association_context_response.jsonl.gz",
+    "corpus_sha256": "43f4593b06a95535aa2f31217c779cf79556329bbf95d0f0a438d18da56b5bba",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_compound_association_makeup",
+    "task_id": "amazon_beauty_compound_association_failure_recovery",
     "source": "amazon_beauty",
     "kind": "compound_association",
-    "scope_name": "makeup products",
-    "comparison": null,
-    "question": "Within makeup products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_compound_association_makeup.jsonl.gz",
-    "corpus_sha256": "418d2433feed78d3894cebcb8d857f7befb6bd341713af57a167133922904583",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "makeup"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Discover a relationship between an observed difficulty and a distinct response or recovery experience; inspect discordant cases. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_compound_association_failure_recovery.jsonl.gz",
+    "corpus_sha256": "14e775677d297df136104b3d1976a0ac2e7377555d9d184550ccba1d2ef60657",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "amazon_beauty_compound_association_skin",
+    "task_id": "amazon_beauty_compound_association_expectation_behavior",
     "source": "amazon_beauty",
     "kind": "compound_association",
-    "scope_name": "skin-care and cleansing products",
-    "comparison": null,
-    "question": "Within skin-care and cleansing products, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/amazon_beauty_compound_association_skin.jsonl.gz",
-    "corpus_sha256": "301b4dd5f7e96f47abb8c03f2cb70147ed12c4a975fb62fa8423746f286dd1b4",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "product_context": "skin"
-    },
-    "dependence_block": "amazon_beauty",
-    "split": "evaluation"
+    "question": "Find a nontrivial link between an observable expectation and a subsequent reported behavior without treating co-occurrence as causation. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "category",
+      "store",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/amazon_beauty_compound_association_expectation_behavior.jsonl.gz",
+    "corpus_sha256": "c497a23a66defb3a05936efade05dcce4e85759a672430a73912d88670848c69",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_group_difference_services",
+    "task_id": "app_reviews_group_difference_workflow_disruption",
     "source": "app_reviews",
     "kind": "group_difference",
-    "scope_name": "Google Play Services and Google Authenticator",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "com.google.android.gms",
-        "com.google.android.apps.authenticator2"
-      ]
-    },
-    "question": "Within Google Play Services and Google Authenticator, investigate substantive differences in reported experiences between com.google.android.gms and com.google.android.apps.authenticator2. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_group_difference_services.jsonl.gz",
-    "corpus_sha256": "6eeb2a116c21363507b9350e202b0625655610a374745e7fb8ced83a1c166d42",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.google.android.gms",
-        "com.google.android.apps.authenticator2"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Discover how a specific workflow disruption differs across defensible user or application populations. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_group_difference_workflow_disruption.jsonl.gz",
+    "corpus_sha256": "6d29658f83b46fc9847979547322109fea46cda30fb962731496a34e648ab6ea",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_group_difference_messaging",
+    "task_id": "app_reviews_group_difference_access_barriers",
     "source": "app_reviews",
     "kind": "group_difference",
-    "scope_name": "Telegram and SMS Backup+",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "org.telegram.messenger",
-        "com.zegoggles.smssync"
-      ]
-    },
-    "question": "Within Telegram and SMS Backup+, investigate substantive differences in reported experiences between org.telegram.messenger and com.zegoggles.smssync. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_group_difference_messaging.jsonl.gz",
-    "corpus_sha256": "9ece304ebe773d0d3f163f83509250cba9edbfad02c77b04b6180afacc055e23",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "org.telegram.messenger",
-        "com.zegoggles.smssync"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Find a non-obvious disparity in a concrete barrier to successful use; distinguish the barrier from generic dissatisfaction. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_group_difference_access_barriers.jsonl.gz",
+    "corpus_sha256": "04d0d03bd172f6cc3c97e1a0fadd754d04f0a1c0fb9f87d6256d33810aa7f832",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_group_difference_emulators",
+    "task_id": "app_reviews_group_difference_adaptation_cost",
     "source": "app_reviews",
     "kind": "group_difference",
-    "scope_name": "PPSSPP and Reicast",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "org.ppsspp.ppsspp",
-        "com.reicast.emulator"
-      ]
-    },
-    "question": "Within PPSSPP and Reicast, investigate substantive differences in reported experiences between org.ppsspp.ppsspp and com.reicast.emulator. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_group_difference_emulators.jsonl.gz",
-    "corpus_sha256": "3f5c9c619d7f67699ef85e4dc1fa680909c3be82d46029b7b3469f1b31674c63",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "org.ppsspp.ppsspp",
-        "com.reicast.emulator"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Discover a difference in workarounds or adaptation burdens and investigate whether application mix explains it. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_group_difference_adaptation_cost.jsonl.gz",
+    "corpus_sha256": "4301009e1eea520b8a264beca45ca1a7c174053602a4dd4f65c039e68a18f1fd",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_group_difference_display",
+    "task_id": "app_reviews_group_difference_promise_experience",
     "source": "app_reviews",
     "kind": "group_difference",
-    "scope_name": "AcDisplay and Muzei",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "com.achep.acdisplay",
-        "net.nurik.roman.muzei"
-      ]
-    },
-    "question": "Within AcDisplay and Muzei, investigate substantive differences in reported experiences between com.achep.acdisplay and net.nurik.roman.muzei. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_group_difference_display.jsonl.gz",
-    "corpus_sha256": "bcd975abf7668f97da3fdc890d0b9aa22c354b30f4a72405be977f0f91ca28df",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.achep.acdisplay",
-        "net.nurik.roman.muzei"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Find where promised or expected utility diverges from reported practical utility across populations. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_group_difference_promise_experience.jsonl.gz",
+    "corpus_sha256": "c6773ed652dad7f7a97aa11e9c67f121bd36b90342421ebb347399e84500c5dc",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_group_difference_files",
+    "task_id": "app_reviews_group_difference_failure_impact",
     "source": "app_reviews",
     "kind": "group_difference",
-    "scope_name": "FrostWire and DiskUsage",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "com.frostwire.android",
-        "com.google.android.diskusage"
-      ]
-    },
-    "question": "Within FrostWire and DiskUsage, investigate substantive differences in reported experiences between com.frostwire.android and com.google.android.diskusage. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_group_difference_files.jsonl.gz",
-    "corpus_sha256": "3e368b42a24419a7048cd324ac589efdaf9370d85f9e28d69d53e20b6db93ac1",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.frostwire.android",
-        "com.google.android.diskusage"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Discover a difference in the consequences of a recurring failure pattern, not merely which population gives lower ratings. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_group_difference_failure_impact.jsonl.gz",
+    "corpus_sha256": "b0d947e90b21b9ff9f11ef662f288fcf6ac4a09b0e087c57b5461f357f48e438",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_temporal_change_sky_map",
+    "task_id": "app_reviews_temporal_change_workflow_evolution",
     "source": "app_reviews",
     "kind": "temporal_change",
-    "scope_name": "com.google.android.stardroid",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2016-09-16",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within com.google.android.stardroid, investigate changes in reported experiences before versus on/after 2016-09-16. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 281,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_temporal_change_sky_map.jsonl.gz",
-    "corpus_sha256": "e1ff80a1fbc71daea8ef2c82461e29d6a7d8258948acf236742f665dc81ad528",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.google.android.stardroid"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Discover a time-local change in workflow experience; choose and justify the boundary and investigate application composition. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_temporal_change_workflow_evolution.jsonl.gz",
+    "corpus_sha256": "c6eec878b2d6f0d2a644abf456cfcef9eec0055a2c52903cf2c90fda29dd149b",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_temporal_change_publishing",
+    "task_id": "app_reviews_temporal_change_regression_pattern",
     "source": "app_reviews",
     "kind": "temporal_change",
-    "scope_name": "org.wordpress.android",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2016-08-14",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within org.wordpress.android, investigate changes in reported experiences before versus on/after 2016-08-14. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 330,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_temporal_change_publishing.jsonl.gz",
-    "corpus_sha256": "d1c32acf084891b7ec1a4cf3a445da01ebd96ad87585426b955094318511b402",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "org.wordpress.android"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Find a substantive emerging or receding failure pattern without assuming any release date or assigning an unsupported cause. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_temporal_change_regression_pattern.jsonl.gz",
+    "corpus_sha256": "4e6c919a7274a5a75e7ea74baf229baf8d7f89a6e809b89627d8f49e7086d76e",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_temporal_change_accessibility",
+    "task_id": "app_reviews_temporal_change_utility_shift",
     "source": "app_reviews",
     "kind": "temporal_change",
-    "scope_name": "com.google.android.marvin.talkback",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2016-12-27",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within com.google.android.marvin.talkback, investigate changes in reported experiences before versus on/after 2016-12-27. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 312,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_temporal_change_accessibility.jsonl.gz",
-    "corpus_sha256": "065dfd4e00d14f32bb8a9b3b42951f1bb5ea3e6228bbb187a430f80e142a78e7",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.google.android.marvin.talkback"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Discover a change in how people describe realized utility, separating prevalence from changing document volume. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_temporal_change_utility_shift.jsonl.gz",
+    "corpus_sha256": "4001efee0dd9dd4eccb78d24f19205e670f1b0a948c442f6150b629a6bf7842e",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_temporal_change_game",
+    "task_id": "app_reviews_temporal_change_recovery_shift",
     "source": "app_reviews",
     "kind": "temporal_change",
-    "scope_name": "com.watabou.pixeldungeon",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2016-04-02",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within com.watabou.pixeldungeon, investigate changes in reported experiences before versus on/after 2016-04-02. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 301,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_temporal_change_game.jsonl.gz",
-    "corpus_sha256": "604c99cfd524ae0c5fd54ed560ad9f30bdc14caaec030552ff1b3277777aabc4",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.watabou.pixeldungeon"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Investigate a temporal change in reported recovery or adaptation; establish the scope of the observed change. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_temporal_change_recovery_shift.jsonl.gz",
+    "corpus_sha256": "4e83517b29353d38333c02a64a9c79d7e447dff5774c136b1d8666189faed7d2",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_compound_association_services",
+    "task_id": "app_reviews_compound_association_friction_response",
     "source": "app_reviews",
     "kind": "compound_association",
-    "scope_name": "com.google.android.gms",
-    "comparison": null,
-    "question": "Within com.google.android.gms, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_compound_association_services.jsonl.gz",
-    "corpus_sha256": "88f6ff1feca6108610ad1cc9d8c285e64370b8fad404c84283d032aa393450e5",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.google.android.gms"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Discover a relationship between a concrete usage friction and a distinct user response; analyze counterexamples. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_compound_association_friction_response.jsonl.gz",
+    "corpus_sha256": "e7fdbe896c544a28d2432beb0cd8ea540dd066995052fdd0422529fcc3a45c79",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_compound_association_messaging",
+    "task_id": "app_reviews_compound_association_utility_tradeoff",
     "source": "app_reviews",
     "kind": "compound_association",
-    "scope_name": "org.telegram.messenger",
-    "comparison": null,
-    "question": "Within org.telegram.messenger, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_compound_association_messaging.jsonl.gz",
-    "corpus_sha256": "df146622c29b7f150f10d17b39aa147f047cde596c16344e25f613abbe379dff",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "org.telegram.messenger"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Find two distinct experiences whose association reveals a non-obvious utility tradeoff. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_compound_association_utility_tradeoff.jsonl.gz",
+    "corpus_sha256": "5a821458938fa073211797c3d25cd555cf6cb3e38ceb78d1a218f6ae737474f3",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_compound_association_emulator",
+    "task_id": "app_reviews_compound_association_context_failure",
     "source": "app_reviews",
     "kind": "compound_association",
-    "scope_name": "com.opendoorstudios.ds4droid",
-    "comparison": null,
-    "question": "Within com.opendoorstudios.ds4droid, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 297,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_compound_association_emulator.jsonl.gz",
-    "corpus_sha256": "a7655a57e93d61d8e6fcbc74323e6c7cb3551edb44ae1f8120cba7d8663d7d18",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "com.opendoorstudios.ds4droid"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Discover an association between a stated usage context and a specific failure or success experience. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_compound_association_context_failure.jsonl.gz",
+    "corpus_sha256": "c3f58c81c9a0b78f6d2b8364a345b290fc0b06d01d88f9d0cc0eded1a6effd72",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "app_reviews_compound_association_news",
+    "task_id": "app_reviews_compound_association_recovery_limit",
     "source": "app_reviews",
     "kind": "compound_association",
-    "scope_name": "org.npr.android.news",
-    "comparison": null,
-    "question": "Within org.npr.android.news, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 263,
-    "max_findings": 5,
-    "corpus_path": "corpora/app_reviews_compound_association_news.jsonl.gz",
-    "corpus_sha256": "a541586e7409cd922902b8dda3721eeea7d4f8e3afc2ecdf38d1dbbe1b6c4d8b",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "org.npr.android.news"
-      ]
-    },
-    "dependence_block": "app_reviews",
-    "split": "evaluation"
+    "question": "Find a relationship between attempted recovery and a separately defined limitation; avoid defining one condition by the other. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "rating",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 500,
+    "min_group_n": 50,
+    "n_documents": 5000,
+    "corpus_path": "corpora/app_reviews_compound_association_recovery_limit.jsonl.gz",
+    "corpus_sha256": "c1d1817ca8e28f367481be1cc06dd65cf1981aefc2186d111bb36e72ff1822af",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_group_difference_tx",
+    "task_id": "cfpb_group_difference_resolution_burden",
     "source": "cfpb",
     "kind": "group_difference",
-    "scope_name": "TX credit-reporting complaints",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "Experian Information Solutions Inc.",
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
-      ]
-    },
-    "question": "Within TX credit-reporting complaints, investigate substantive differences in reported experiences between Experian Information Solutions Inc. and TRANSUNION INTERMEDIATE HOLDINGS, INC.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_group_difference_tx.jsonl.gz",
-    "corpus_sha256": "342389725fd318329c262304dd9f4f7e2d23784f11a89d5b6e37eb587315d505",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "state": "TX",
-      "entity_ids": [
-        "Experian Information Solutions Inc.",
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Discover how a specific burden in pursuing resolution differs across defensible complaint populations. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_group_difference_resolution_burden.jsonl.gz",
+    "corpus_sha256": "c4e3babbc5fc8ef08f5af60773228147293dc6702a35e5608e7e3627ab0daeb9",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_group_difference_fl",
+    "task_id": "cfpb_group_difference_process_breakdown",
     "source": "cfpb",
     "kind": "group_difference",
-    "scope_name": "FL credit-reporting complaints",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "EQUIFAX, INC.",
-        "Experian Information Solutions Inc."
-      ]
-    },
-    "question": "Within FL credit-reporting complaints, investigate substantive differences in reported experiences between EQUIFAX, INC. and Experian Information Solutions Inc.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_group_difference_fl.jsonl.gz",
-    "corpus_sha256": "956ca973b1c716fd47d47c4c783c6103b009971327c6601ea8089b012dabe1f5",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "state": "FL",
-      "entity_ids": [
-        "EQUIFAX, INC.",
-        "Experian Information Solutions Inc."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Find a disparity in an observable procedural breakdown; distinguish process from generic negative sentiment. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_group_difference_process_breakdown.jsonl.gz",
+    "corpus_sha256": "99076217188f9ba014ccac3e579437f0ed65f281cb1f545bbb85b26bb33a25f1",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_group_difference_ca",
+    "task_id": "cfpb_group_difference_downstream_impact",
     "source": "cfpb",
     "kind": "group_difference",
-    "scope_name": "CA credit-reporting complaints",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
-        "EQUIFAX, INC."
-      ]
-    },
-    "question": "Within CA credit-reporting complaints, investigate substantive differences in reported experiences between TRANSUNION INTERMEDIATE HOLDINGS, INC. and EQUIFAX, INC.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_group_difference_ca.jsonl.gz",
-    "corpus_sha256": "a71889fd0d80351cca9cbe3037ff8f78ffd28df901b523934f47052c4ab8cfa7",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "state": "CA",
-      "entity_ids": [
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
-        "EQUIFAX, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Discover a population-dependent difference in a concrete downstream consequence described in narratives. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_group_difference_downstream_impact.jsonl.gz",
+    "corpus_sha256": "e710a403889b7767436cd527b1298a746b190923170b6b8bd4ccb8f2b09fd176",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_group_difference_ny",
+    "task_id": "cfpb_group_difference_recurrence",
     "source": "cfpb",
     "kind": "group_difference",
-    "scope_name": "NY credit-reporting complaints",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "Experian Information Solutions Inc.",
-        "EQUIFAX, INC."
-      ]
-    },
-    "question": "Within NY credit-reporting complaints, investigate substantive differences in reported experiences between Experian Information Solutions Inc. and EQUIFAX, INC.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_group_difference_ny.jsonl.gz",
-    "corpus_sha256": "4c67f818b625c97fef339d9fae2cb2c6da7f3954be67b4c89a21cf712f384932",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "state": "NY",
-      "entity_ids": [
-        "Experian Information Solutions Inc.",
-        "EQUIFAX, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Find where a recurring problem differs across populations and examine whether reporting composition explains the contrast. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_group_difference_recurrence.jsonl.gz",
+    "corpus_sha256": "4ecec6553ad61e0263b914d27727845acf5832ea3f5792d62829dbb303f43fa9",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_group_difference_ga",
+    "task_id": "cfpb_group_difference_information_asymmetry",
     "source": "cfpb",
     "kind": "group_difference",
-    "scope_name": "GA credit-reporting complaints",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
-        "Experian Information Solutions Inc."
-      ]
-    },
-    "question": "Within GA credit-reporting complaints, investigate substantive differences in reported experiences between TRANSUNION INTERMEDIATE HOLDINGS, INC. and Experian Information Solutions Inc.. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_group_difference_ga.jsonl.gz",
-    "corpus_sha256": "dd34175d1223d074acd10185663b02a355438119618716f87019185269c170ab",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "state": "GA",
-      "entity_ids": [
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
-        "Experian Information Solutions Inc."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Discover a difference in an observable information or communication barrier and explain its practical implications. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_group_difference_information_asymmetry.jsonl.gz",
+    "corpus_sha256": "4625c7fe3e2077a1470798b78be0bec4ad4b5ed71ce990a977ca5f5fcd9416ad",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_temporal_change_experian_refreshed",
+    "task_id": "cfpb_temporal_change_process_shift",
     "source": "cfpb",
     "kind": "temporal_change",
-    "scope_name": "experian credit-reporting complaints",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2025-01-16",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within experian credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-16. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_temporal_change_experian_refreshed.jsonl.gz",
-    "corpus_sha256": "a34018f6a8138a27f97ba8517d1914678a7b10baae54468349e0f6405d29b5a6",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "Experian Information Solutions Inc."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Discover a shift in an observable complaint-handling experience, selecting a defensible time boundary without assuming policy causation. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_temporal_change_process_shift.jsonl.gz",
+    "corpus_sha256": "d2e12302d7cc8d254ac7d56b84c732e3f1316ffb49c586257e2c538eedb6a1cc",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_temporal_change_transunion",
+    "task_id": "cfpb_temporal_change_burden_shift",
     "source": "cfpb",
     "kind": "temporal_change",
-    "scope_name": "transunion credit-reporting complaints",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2025-01-17",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within transunion credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-17. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_temporal_change_transunion.jsonl.gz",
-    "corpus_sha256": "15e0b19d239fd5fcac6886022061ee804759170ad51a9314c760a57746cfecaf",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Find an emerging or declining resolution burden and assess whether company composition explains the trend. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_temporal_change_burden_shift.jsonl.gz",
+    "corpus_sha256": "2683e4387f7510a03def31373ea2a163bf5b19d4cfc4e85a52a3f8c8ab1152dd",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_temporal_change_equifax",
+    "task_id": "cfpb_temporal_change_impact_shift",
     "source": "cfpb",
     "kind": "temporal_change",
-    "scope_name": "equifax credit-reporting complaints",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2025-01-25",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within equifax credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-25. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_temporal_change_equifax.jsonl.gz",
-    "corpus_sha256": "6f4e061f5ad4d2dd8c4b9f1216945b58a1943b382eadc23310fbb68f7d7748ed",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "EQUIFAX, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Discover a change in a concrete reported consequence, separating narrative prevalence from complaint volume. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_temporal_change_impact_shift.jsonl.gz",
+    "corpus_sha256": "9f7c7548a64e35c45297f3cde83d7f8038033138b792439e5515728207f79177",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_temporal_change_other_companies",
+    "task_id": "cfpb_temporal_change_recurrence_shift",
     "source": "cfpb",
     "kind": "temporal_change",
-    "scope_name": "other companies credit-reporting complaints",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2025-01-31",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within other companies credit-reporting complaints, investigate changes in reported experiences before versus on/after 2025-01-31. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_temporal_change_other_companies.jsonl.gz",
-    "corpus_sha256": "f95d4cb507b9f9abeb319d89a9c2da0fad9d15a73dfe03566faf21c34c128361",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "exclude_entity_ids": [
-        "Experian Information Solutions Inc.",
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
-        "EQUIFAX, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Investigate a temporal change in repeated or unresolved experiences and identify limits on its interpretation. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_temporal_change_recurrence_shift.jsonl.gz",
+    "corpus_sha256": "cfbf6cbafd7e6f546f6a57f915414b39e7d9f014dc5b0420555204bc1dcf45e9",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_compound_association_experian",
+    "task_id": "cfpb_compound_association_process_consequence",
     "source": "cfpb",
     "kind": "compound_association",
-    "scope_name": "Experian Information Solutions Inc.",
-    "comparison": null,
-    "question": "Within Experian Information Solutions Inc., discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_compound_association_experian.jsonl.gz",
-    "corpus_sha256": "9794bdd6c496d54cb1e6c39a27d32b761fd97c215a3caca016224058c5545475",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "Experian Information Solutions Inc."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Discover an association between a specific procedural experience and a distinct consequence in complaint narratives. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_compound_association_process_consequence.jsonl.gz",
+    "corpus_sha256": "1613cd6fffb0a6e1e4afa19daf0d0b2d93ef9f4804be64b842357f1cd90c29b1",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_compound_association_transunion",
+    "task_id": "cfpb_compound_association_response_recurrence",
     "source": "cfpb",
     "kind": "compound_association",
-    "scope_name": "TRANSUNION INTERMEDIATE HOLDINGS, INC.",
-    "comparison": null,
-    "question": "Within TRANSUNION INTERMEDIATE HOLDINGS, INC., discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_compound_association_transunion.jsonl.gz",
-    "corpus_sha256": "3ca730750df35e081f6dc9b10313f1403b735bcfed0b2acb57b7e6d3c774b67b",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "TRANSUNION INTERMEDIATE HOLDINGS, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Find a nontrivial relationship between an observable response and recurrence or persistence, inspecting discordant narratives. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_compound_association_response_recurrence.jsonl.gz",
+    "corpus_sha256": "ec2d781f6f88f9c60cb938271b449f055cd05ca9423f475f3cbcfd13d1cb312a",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "cfpb_compound_association_equifax",
+    "task_id": "cfpb_compound_association_barrier_behavior",
     "source": "cfpb",
     "kind": "compound_association",
-    "scope_name": "EQUIFAX, INC.",
-    "comparison": null,
-    "question": "Within EQUIFAX, INC., discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/cfpb_compound_association_equifax.jsonl.gz",
-    "corpus_sha256": "e69f5827c448b4d06a946b12693498e24396bedb0c51cadde571fbf1332852be",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "entity_ids": [
-        "EQUIFAX, INC."
-      ]
-    },
-    "dependence_block": "cfpb",
-    "split": "evaluation"
+    "question": "Discover a relationship between an information barrier and a distinct consumer action; separate association from explanation. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/cfpb_compound_association_barrier_behavior.jsonl.gz",
+    "corpus_sha256": "6391e2cd6c52c404541bedd2ec00529ddad030de537884b1eb626d7ccfa7d916",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_group_difference_ford_suvs",
+    "task_id": "nhtsa_group_difference_operating_context",
     "source": "nhtsa",
     "kind": "group_difference",
-    "scope_name": "FORD|ESCAPE versus FORD|EXPLORER",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "FORD|ESCAPE",
-        "FORD|EXPLORER"
-      ]
-    },
-    "question": "Within FORD|ESCAPE versus FORD|EXPLORER, investigate substantive differences in reported experiences between FORD|ESCAPE and FORD|EXPLORER. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_group_difference_ford_suvs.jsonl.gz",
-    "corpus_sha256": "f7cccc93c1b8860d9d024a25d85bbb5e6750341277778dae75775116b763e82b",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "vehicle_models": [
-        "FORD|ESCAPE",
-        "FORD|EXPLORER"
-      ]
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Discover a population-dependent difference in a failure experience under a concrete operating context; do not infer vehicle incidence rates. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_group_difference_operating_context.jsonl.gz",
+    "corpus_sha256": "ede22b73f2267d0c26ddf9cddad9258e7789cbfb0ea8e021c493a6db0c91eee9",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_group_difference_pickups_refreshed",
+    "task_id": "nhtsa_group_difference_warning_gap",
     "source": "nhtsa",
     "kind": "group_difference",
-    "scope_name": "FORD|F-150 versus RAM|1500",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "FORD|F-150",
-        "RAM|1500"
-      ]
-    },
-    "question": "Within FORD|F-150 versus RAM|1500, investigate substantive differences in reported experiences between FORD|F-150 and RAM|1500. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_group_difference_pickups_refreshed.jsonl.gz",
-    "corpus_sha256": "b6adb92bd8b62d86128c3ec0a4b9ccce05d2fecb552e932d6d7ab19bcddc067e",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "vehicle_models": [
-        "FORD|F-150",
-        "RAM|1500"
-      ]
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Find a disparity in observable warning or detectability experiences and assess vehicle-composition explanations. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_group_difference_warning_gap.jsonl.gz",
+    "corpus_sha256": "716425316e216574113b2d3d1b896ef07226ea57c42d23cd06039e619a3ad413",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_group_difference_sedans",
+    "task_id": "nhtsa_group_difference_repair_persistence",
     "source": "nhtsa",
     "kind": "group_difference",
-    "scope_name": "HYUNDAI|SONATA versus KIA|OPTIMA",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "HYUNDAI|SONATA",
-        "KIA|OPTIMA"
-      ]
-    },
-    "question": "Within HYUNDAI|SONATA versus KIA|OPTIMA, investigate substantive differences in reported experiences between HYUNDAI|SONATA and KIA|OPTIMA. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 453,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_group_difference_sedans.jsonl.gz",
-    "corpus_sha256": "e5d1a5f8804ccccbb3b1d12b379721fd011df906cfa7bf5b33a925057092609b",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "vehicle_models": [
-        "HYUNDAI|SONATA",
-        "KIA|OPTIMA"
-      ]
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Discover a difference in recurrence or persistence following attempted remedy, supported by narrative evidence. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_group_difference_repair_persistence.jsonl.gz",
+    "corpus_sha256": "ac1dac2f19742f6fc514d43896e671cad3164506f93cbf0938a9ef5e12836383",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_group_difference_honda_cars",
+    "task_id": "nhtsa_group_difference_functional_impact",
     "source": "nhtsa",
     "kind": "group_difference",
-    "scope_name": "HONDA|ACCORD versus HONDA|CIVIC",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "HONDA|ACCORD",
-        "HONDA|CIVIC"
-      ]
-    },
-    "question": "Within HONDA|ACCORD versus HONDA|CIVIC, investigate substantive differences in reported experiences between HONDA|ACCORD and HONDA|CIVIC. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_group_difference_honda_cars.jsonl.gz",
-    "corpus_sha256": "353e7a9d740023b84c30f64d2e698023c1b406300f665991b38c567e0d3bbf72",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "vehicle_models": [
-        "HONDA|ACCORD",
-        "HONDA|CIVIC"
-      ]
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Find a non-obvious population difference in functional consequences rather than merely counting complaints. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_group_difference_functional_impact.jsonl.gz",
+    "corpus_sha256": "946156eadb1bb69752ff39405b27fe3f0c7e82e9aee3a7f9767b4bd872246d40",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_group_difference_subaru",
+    "task_id": "nhtsa_group_difference_adaptation_burden",
     "source": "nhtsa",
     "kind": "group_difference",
-    "scope_name": "SUBARU|OUTBACK versus SUBARU|FORESTER",
-    "comparison": {
-      "field": "comparison_group",
-      "groups": [
-        "SUBARU|OUTBACK",
-        "SUBARU|FORESTER"
-      ]
-    },
-    "question": "Within SUBARU|OUTBACK versus SUBARU|FORESTER, investigate substantive differences in reported experiences between SUBARU|OUTBACK and SUBARU|FORESTER. Discover which concrete situations distinguish them, quantify the contrast with both denominators, and examine counterexamples and differences in group composition. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 446,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_group_difference_subaru.jsonl.gz",
-    "corpus_sha256": "84f69711cba99ed0c2774ee0517ebf1f0bbe01862c99d8df2de2ccb6542d6d92",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "vehicle_models": [
-        "SUBARU|OUTBACK",
-        "SUBARU|FORESTER"
-      ]
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Discover a difference in driver adaptation or workaround burdens and identify where the contrast stops generalizing. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_group_difference_adaptation_burden.jsonl.gz",
+    "corpus_sha256": "f163516638c93e7f6bc9c8dfd4e958b38549686856bc0b8f2b6f7e519587c42f",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_temporal_change_nissan",
+    "task_id": "nhtsa_temporal_change_experience_shift",
     "source": "nhtsa",
     "kind": "temporal_change",
-    "scope_name": "nissan vehicle complaints",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2022-03-10",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within nissan vehicle complaints, investigate changes in reported experiences before versus on/after 2022-03-10. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_temporal_change_nissan.jsonl.gz",
-    "corpus_sha256": "be234fb7296cb7e4c148d67184fc2ac2fb5d653e8fc5485a5a6e8fad0a2da02c",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "make": "NISSAN"
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Discover a meaningful shift in a specific reported failure experience and test vehicle-age or composition alternatives. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_temporal_change_experience_shift.jsonl.gz",
+    "corpus_sha256": "72e6a1fafb0d87ca4e1dee4e4ccaf536d350b0adf4df7aaab9e6b77039571701",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_temporal_change_ford_cars",
+    "task_id": "nhtsa_temporal_change_remedy_shift",
     "source": "nhtsa",
     "kind": "temporal_change",
-    "scope_name": "ford cars vehicle complaints",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2022-08-22",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within ford cars vehicle complaints, investigate changes in reported experiences before versus on/after 2022-08-22. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_temporal_change_ford_cars.jsonl.gz",
-    "corpus_sha256": "8ddd37685dd177f0c7688342716f6e70db1e83f9454a4e98a90ce1a722667760",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "vehicle_models": [
-        "FORD|FUSION",
-        "FORD|FOCUS"
-      ]
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Find a temporal change in reported remedy or recurrence experiences; select the date boundary and justify its interpretation. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_temporal_change_remedy_shift.jsonl.gz",
+    "corpus_sha256": "7ec73a8e5510c0ef83b8c00e0cf27fd8e16500253d80a016d425176a4008ae48",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_temporal_change_honda_suvs",
+    "task_id": "nhtsa_temporal_change_context_shift",
     "source": "nhtsa",
     "kind": "temporal_change",
-    "scope_name": "honda suvs vehicle complaints",
-    "comparison": {
-      "field": "timestamp",
-      "cutoff": "2022-12-10",
-      "groups": [
-        "before",
-        "on_or_after"
-      ]
-    },
-    "question": "Within honda suvs vehicle complaints, investigate changes in reported experiences before versus on/after 2022-12-10. Identify a specific changing pattern, quantify both period denominators, and examine whether entity, product, rating or reporting composition could explain it. Dates are reporting/review dates, not necessarily event or software-release dates. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 500,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_temporal_change_honda_suvs.jsonl.gz",
-    "corpus_sha256": "87ed498b8deec9d14d8249442d7bc0fce6199fa122a6a463d8e09191bbe314b3",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "vehicle_models": [
-        "HONDA|CR-V",
-        "HONDA|PILOT"
-      ]
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Discover a change in context-dependent functional consequences without treating complaint dates as failure incidence. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_temporal_change_context_shift.jsonl.gz",
+    "corpus_sha256": "fd27d7c2540e2995397d66cc8a2b0cd7ef183af31c52bc71eb2be8fcdfa146bb",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_compound_association_chevrolet",
+    "task_id": "nhtsa_compound_association_context_consequence",
     "source": "nhtsa",
     "kind": "compound_association",
-    "scope_name": "CHEVROLET vehicle complaints",
-    "comparison": null,
-    "question": "Within CHEVROLET vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_compound_association_chevrolet.jsonl.gz",
-    "corpus_sha256": "4d6cd70af18f54a25e3dc58b7aaf822cffed08ae28710033820bb6f74c6c764f",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "make": "CHEVROLET"
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Discover a relationship between an operating context and a distinct functional consequence; examine discordant reports. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_compound_association_context_consequence.jsonl.gz",
+    "corpus_sha256": "4fd5b24dadcd6cd471b744226b2e96150b6ceef0fab4efb03f6fbe8dc5f32969",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_compound_association_jeep",
+    "task_id": "nhtsa_compound_association_warning_response",
     "source": "nhtsa",
     "kind": "compound_association",
-    "scope_name": "JEEP vehicle complaints",
-    "comparison": null,
-    "question": "Within JEEP vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_compound_association_jeep.jsonl.gz",
-    "corpus_sha256": "a4006b33adaa8c42755b801b17c9a054daa5c68570164f923beca76761422586",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "make": "JEEP"
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Find an association between a warning experience and a separate driver or service response, avoiding circular definitions. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_compound_association_warning_response.jsonl.gz",
+    "corpus_sha256": "84088f8a3e51f786c9a9d392a9a0e750ca03c067117d4026385db52d3d0702ef",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_compound_association_toyota_refreshed",
+    "task_id": "nhtsa_compound_association_remedy_recurrence",
     "source": "nhtsa",
     "kind": "compound_association",
-    "scope_name": "TOYOTA vehicle complaints",
-    "comparison": null,
-    "question": "Within TOYOTA vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_compound_association_toyota_refreshed.jsonl.gz",
-    "corpus_sha256": "77f8ebafd22360c54a0ebc3e7ac4670d18abadb87b3e95693d7a7e7cde14a629",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "make": "TOYOTA"
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Discover a relationship between an attempted remedy and a separately defined persistence pattern without inferring treatment efficacy. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_compound_association_remedy_recurrence.jsonl.gz",
+    "corpus_sha256": "99af91ae51f88b6f536c26c18b3ce1c9b1a5dc4f55feb2c903f083d5f6c05052",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   },
   {
-    "task_id": "nhtsa_compound_association_tesla",
+    "task_id": "nhtsa_compound_association_coupled_failures",
     "source": "nhtsa",
     "kind": "compound_association",
-    "scope_name": "TESLA vehicle complaints",
-    "comparison": null,
-    "question": "Within TESLA vehicle complaints, discover a recurring association between two distinct reported experiences or events. Explain the context, quantify the joint table and conditional difference, inspect cases where only one occurs, and distinguish an informative association from a definition that makes co-occurrence inevitable. Submit at most five evidence-backed findings or a justified abstention. Do not merely list common words, broad categories or generic sentiment. Account explicitly for unknown judgments. Do not infer causality or population incidence. Any analysis method is allowed.",
-    "n_documents": 600,
-    "max_findings": 5,
-    "corpus_path": "corpora/nhtsa_compound_association_tesla.jsonl.gz",
-    "corpus_sha256": "9ede3f7ba9663dd77b16ddc38488bd79653facdea1fa212c1cff5adf186a1ebe",
-    "output_contract": "output.schema.json",
-    "selection_scope": {
-      "make": "TESLA"
-    },
-    "dependence_block": "nhtsa",
-    "split": "evaluation"
+    "question": "Find two distinct reported experiences whose association suggests a useful investigation priority, not a proven mechanical cause. Explore the complete supplied corpus before choosing a scope.\nSelect your own observable text condition(s), analysis population and comparison.\nExplain why the selection addresses the research objective, alternative patterns\nconsidered and search/selection bias. Return at most three nonredundant findings.\nFor each, partition every selected document into positive, negative or unknown\nfor each condition; compute the full statistics with textinsightbench.validation.expected.\nReport metadata-stratified contrasts, largest-stratum removal, support concentration,\nunknown sensitivity and missing-metadata limits. Provide exact quotations from at\nleast three supporting documents and a counterexample if known negative or\ndiscordant cases exist. Discuss competing explanations and where the finding fails.\nGeneric sentiment, metadata counts and restating the brief are insufficient.\nSame-corpus exploration is not independent confirmation or causal evidence.\nAbstain with a reason when no defensible finding meets these requirements.",
+    "difficulty": "discovery",
+    "discovery_mode": "agent_selected",
+    "max_findings": 3,
+    "allowed_metadata_fields": [
+      "entity_id",
+      "state",
+      "make",
+      "model_year",
+      "timestamp",
+      "report_year"
+    ],
+    "min_population_n": 1000,
+    "min_group_n": 100,
+    "n_documents": 10000,
+    "corpus_path": "corpora/nhtsa_compound_association_coupled_failures.jsonl.gz",
+    "corpus_sha256": "aad2f74bc7125a4f3055800570c036b565c0e5f4825d0cbd01dfc733b54b32e3",
+    "robustness_protocol": {
+      "axes": [
+        "entity_id",
+        "rating",
+        "report_year"
+      ],
+      "min_known_per_arm": 5
+    }
   }
 ]

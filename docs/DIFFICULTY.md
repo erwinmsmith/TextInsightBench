@@ -1,37 +1,27 @@
-# Difficulty profiles
+# Exploration challenge
 
-TextInsightBench has 50 task identities. Each can run under `standard` or `hard`;
-these are evaluation profiles, not 100 independent tasks. Use `hard` for the
-stricter mining challenge and report it explicitly. Scores across profiles are
-not directly comparable.
+The default 50 tasks require broad corpus exploration, not an additional profile.
+Each contains 5,000 or 10,000 documents. The agent selects its text conditions,
+population, group values or time boundary. Research objectives cover practical
+tradeoffs, process breakdowns, adaptation burdens, recurrence and consequences
+without prescribing which pattern exists.
 
-The hard profile keeps the same task corpus, semantic discovery goal and base
-reference set. It does not claim that a larger corpus or independent confirmation
-set has been constructed. Existing references measure coverage of the original
-discovery; they are not ground truth for robustness or causal explanations.
+The difficulty is in finding a substantive relationship, operationalizing it
+across the analysis population, and explaining its scope and competing accounts.
+Corpus size alone is not evidence of a difficult or valid evaluation.
 
-## What changes
+A selected population must contain at least 500 documents for App Reviews and
+1,000 otherwise. Each metadata/time comparison arm needs at least 50 or 100
+documents respectively. These thresholds refer to total documents, not positive
+cases. Unknown labels must be retained and interpreted. At most three
+nonredundant findings are accepted. Tiny handpicked groups and ID/text-based
+population filters are prohibited.
 
-| Requirement | Standard | Hard |
-|---|---|---|
-| Maximum findings | 5 | 3 |
-| Supporting evidence | At least one supporting quote | Quotes from at least 3 distinct positive documents |
-| Counterexamples | Semantically assessed | A negative/discordant quote is structurally required when such assigned cases exist |
-| Composition | Qualitative assessment | Recomputed metadata-stratified comparisons on 3 fixed axes |
-| Dominant-stratum sensitivity | Not structurally required | Recomputed removal of the largest metadata stratum |
-| Concentration and missingness | Qualitative assessment | Explicit coverage, missingness and maximum support-share statistics |
-| Task-fulfillment base points | 35 | 15 |
-| Analytical-depth weight | 10 | 30, including correct robustness interpretation |
-
-The axes are `entity_id`, `rating` and `report_year` (a valid reporting/review
-timestamp's calendar year). They are fixed for every task and are not selected
-after looking at the direction of the result. A missing value is not a stratum.
-An axis with no useful comparison must be reported as unavailable; it must not be
-silently replaced by a handpicked favorable axis.
-
-An accurately demonstrated composition-dependent result or reversal can earn full
-credit. The challenge is to discover and explain a defensible pattern, not to force
-every aggregate association to remain positive.
+The fixed audit axes are entity_id, rating and report_year. Missing or degenerate
+axes remain unavailable, never silently replaced with a favorable axis. In
+particular, stratifying on the same metadata as the comparison may leave no
+comparable strata; report that limitation. A correctly established composition
+effect or reversal can earn full credit. Stability in every axis is not required.
 
 ## Exact audit calculations
 
@@ -42,16 +32,16 @@ All base statistics remain required. Each finding additionally reports the
 from textinsightbench.validation import expected
 from textinsightbench.difficulty import audit
 
-# The runner's task already includes the chosen profile. The agent supplies
+# The runner's task already includes the discovery protocol. The agent supplies
 # definitions, all document assignments, evidence and interpretation itself.
 finding['statistics'] = expected(finding, task, documents)
 statistics, stratum_details = audit(finding, task, documents)
 ```
 
-For group/time tasks, arm 0 and arm 1 are the task's original comparison groups,
+For group/time tasks, arm 0 and arm 1 are the agent's declared comparison groups,
 excluding unknown condition assignments. For compound tasks, arm 0 is known
 not-A and arm 1 is known A, restricted to known B; the outcome is B. Thus the
-effect always matches the sign convention of the original task.
+effect always matches the sign convention of the declared comparison.
 
 For each axis:
 
@@ -82,44 +72,15 @@ eliminate multiple-testing risk, or act as unseen holdout confirmation. Unknown
 assignment bounds remain mandatory for group/time findings. Compound findings
 must interpret the jointly unknown population and avoid unsupported extrapolation.
 
-## Scoring
 
-For a supported, task-fulfilling, nonduplicate hard finding:
+## Evaluation
 
-```text
-quality = support × (15 + 25S + 20E + 30D + 10C)
-```
+Quality is support × (15 + 25S + 20E + 30D + 10C). Depth requires a useful finding
+and a supported discussion of alternatives and search/selection bias. See
+[scoring](SCORING.md). Numeric audit correctness does not establish semantic
+label correctness: the current judge audits a document sample, with uncertainty
+preserved. No independent validation phase or causal identification is implied.
 
-The dimension names and support factors are unchanged. Here D requires concrete
-discovery plus correct interpretation of the available audits and the strongest
-alternative composition explanation. Material omissions cap D at 0.5; numerical
-restatement without analysis caps it at 0.25. A bare aggregate contrast does not
-fulfill the hard task. The quality judge sees computed audit details but no
-reference conclusion. Reference matching is a separate coverage diagnostic.
-
-Hard reviews bind the effective task hash and `finding-quality-robustness` scoring
-identifier. Ordinary reviews cannot be reused. Runs and reports reject mixed
-profiles. An abstention remains unscored, not a verified absence.
-
-## Run all 50 tasks
-
-```bash
-tib run --difficulty hard --data data/participant \
-  --command 'python my_agent.py' --output runs/hard/submissions
-tib validate --difficulty hard --data data/participant \
-  --submission runs/hard/submissions/amazon_beauty_group_difference_hair_tools.json
-tib judge --difficulty hard --data data/participant \
-  --submissions runs/hard/submissions --references evaluation/references.json \
-  --base-url "$JUDGE_BASE_URL" --model "$JUDGE_MODEL" --output runs/hard/reviews
-tib evaluate --difficulty hard --data data/participant \
-  --submissions runs/hard/submissions --references evaluation/references.json \
-  --reviews runs/hard/reviews --output runs/hard/report.json
-```
-
-Use the same profile in all commands and a new output directory. The built-in
-abstaining agent can smoke-test all 50 tasks without paid model calls; this is an
-interface test, not evidence that an agent solves the hard profile.
-
-Further difficulty through broader corpus search, agent-selected comparison
-boundaries or genuinely unseen confirmation data requires a new data-construction
-and reference-validation pass. Those capabilities are not implied by this profile.
+Current tasks automatically select this protocol. Do not use --difficulty hard.
+The CLI retains historical profile support solely for historical task snapshots.
+Runs, reviews and scores are bound to the current task hashes.
