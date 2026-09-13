@@ -17,7 +17,7 @@ def publish(args):
     for key,folder in [('dataset',args.data),('evaluation',args.evaluation)]:
         manifest=json.loads((folder/'manifest.json').read_text())
         local=set(manifest['files'])|{'manifest.json'}
-        from rebuild_benchmark import sha
+        from textinsightbench.core import file_sha as sha
         for name,record in manifest['files'].items():
             if sha(folder/name)!=record['sha256']:
                 raise ValueError('Prepared manifest mismatch: '+name)
@@ -36,7 +36,7 @@ def publish(args):
     for key,folder,repo_id,parent,obsolete in plans:
         commit=api.upload_folder(repo_id=repo_id,repo_type='dataset',folder_path=folder,
             ignore_patterns=['.cache/**'],delete_patterns=obsolete,parent_commit=parent,
-            commit_message='Rebuild open exploration tasks and corpus-grounded evaluation')
+            commit_message='Sync benchmark documentation, evaluation protocol and results')
         lock[key]['revision']=commit.oid
         print(json.dumps({'repo_id':repo_id,'revision':commit.oid}),flush=True)
     lock_path.write_text(json.dumps(lock,indent=2)+'\n')

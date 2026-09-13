@@ -14,7 +14,7 @@ MIN_KNOWN_PER_ARM = 5
 
 def scoring_version(task):
     if task.get('difficulty') == 'discovery':
-        return 'finding-quality-discovery'
+        return 'finding-quality-discovery-evidence'
     return 'finding-quality-robustness' if task.get('difficulty') == 'hard' else 'finding-quality'
 
 

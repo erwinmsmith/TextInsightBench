@@ -15,6 +15,17 @@ from textinsightbench.validation import expected
 from textinsightbench.difficulty import apply_profile, scoring_version
 from textinsightbench.evaluation import score
 from textinsightbench.semantic_audit import packet
+from textinsightbench.evidence_check import PROTOCOL,compare,batches,parse
+
+
+def fixture_check(task,rows,sub):
+    sampled=packet(task,rows,sub,'fixture',240)
+    annotations=[]
+    for row in sampled['documents']:
+        states=list(row['participant_assignments'].values())
+        annotations.append({'doc_id':row['doc_id'],'states':states,
+                            'quotes':[row['text'] if s=='positive' else '' for s in states]})
+    return {'protocol_sha256':digest(PROTOCOL),'seed':'fixture','budget':240,'annotations':annotations}
 
 
 def discovery():
@@ -29,6 +40,7 @@ def discovery():
     review.update(submission_sha256=digest(sub),task_sha256=digest(task),scoring_version=scoring_version(task))
     review['findings'][0]['reference_match']=None
     ref['reference_id']=None
+    review['blind_check']=fixture_check(task,rows,sub)
     return task,rows,sub,ref,review
 
 
@@ -98,6 +110,11 @@ class DiscoveryTests(unittest.TestCase):
             write(root/'submissions/synthetic.json',sub)
             write(root/'submissions/run.json',{'difficulty':'discovery'})
             def request(args,system,payload):
+                if payload.get('stage')=='blind_evidence_check':
+                    self.assertNotIn('submission',payload)
+                    self.assertNotIn('task',payload)
+                    return {'labels':[[d['i'],'positive' if d['segments'][0]['text']=='Parts fall off.' else 'negative',
+                                       0 if d['segments'][0]['text']=='Parts fall off.' else None] for d in payload['documents']]},{'model':'synthetic'}
                 self.assertIn('Semantic assignment validity is SAMPLED',system)
                 self.assertNotIn('reference',payload)
                 self.assertNotIn('assignments',payload['submission']['findings'][0])
@@ -108,7 +125,7 @@ class DiscoveryTests(unittest.TestCase):
                 output=root/'reviews',model='synthetic',base_url='https://synthetic.invalid',
                 max_output_tokens=1000,max_input_chars=100000,task_id=None,limit=None,audit_documents=60)
             with patch('textinsightbench.cli.request_json',side_effect=request) as mock:
-                judge(args);self.assertEqual(mock.call_count,1)
+                judge(args);self.assertEqual(mock.call_count,6)
             with patch('textinsightbench.cli.request_json',side_effect=AssertionError('No repeated API call')):
                 judge(args)
             args.reviews=root/'reviews';args.output=root/'report.json';evaluate(args)
@@ -116,3 +133,24 @@ class DiscoveryTests(unittest.TestCase):
             self.assertEqual(result['difficulty'],'discovery')
             self.assertEqual(result['quality_mean'],83)
             self.assertIsNone(result['reference_coverage_mean'])
+
+    def test_false_assignments_cannot_receive_perfect_narrative_score(self):
+        task,rows,sub,ref,review=discovery()
+        for annotation in review['blind_check']['annotations']:
+            annotation.update(states=['negative'],quotes=[''])
+        review['findings'][0].update(statistical_validity=1,evidence_entailment=1,analytical_depth=1,calibration=1)
+        result=score(sub,task,rows,ref,review,'refhash')
+        self.assertEqual(result['quality'],0)
+        self.assertEqual(result['findings'][0]['effective_support'],'unsupported')
+        self.assertEqual(result['findings'][0]['support'],'supported')
+
+    def test_missing_or_forged_blind_check_rejected(self):
+        task,rows,sub,ref,review=discovery()
+        review['blind_check']['annotations'].pop()
+        with self.assertRaises(ValueError):score(sub,task,rows,ref,review,'refhash')
+
+    def test_blind_payload_has_no_claims_or_assignments(self):
+        task,rows,sub,_,_=discovery()
+        for _,inputs in batches(packet(task,rows,sub,'test',60)):
+            self.assertEqual(set(inputs),{'stage','definitions','documents','output_contract'})
+            self.assertTrue(all(set(d)=={'i','segments'} for d in inputs['documents']))

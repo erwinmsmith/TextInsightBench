@@ -2,7 +2,7 @@
   "version": "textinsightbench",
   "evaluation_unit": "evidence-backed downstream finding",
   "discovery_mode": "agent_selected",
-  "scoring_version": "finding-quality-discovery",
+  "scoring_version": "finding-quality-discovery-evidence",
   "task_families": {
     "group_difference": 20,
     "temporal_change": 15,
@@ -12,8 +12,8 @@
     "task_only": "Use the supplied task corpus.",
     "unlabeled_pool": "Learn from the released pool before evaluation."
   },
-  "reference_policy": "No fixed conclusions for redesigned tasks; previous references belong only to historical tasks.",
-  "semantic_review": "Bounded assignment-stratified and corpus-wide sample; exhaustive arithmetic, not exhaustive semantic verification.",
+  "reference_policy": "No fixed reference conclusions; score against corpus evidence and the public rubric.",
+  "semantic_review": "Sampled claim-blind document checks cap narrative quality; exhaustive arithmetic, sampled semantic verification.",
   "independent_validation": false,
   "historical_exposure": "Task documents were drawn from a previously public learning pool. Not an unseen or independent validation set.",
   "cross_task_adaptation": "Freeze global prompts, learned parameters and thresholds; no evaluation-feedback transfer.",

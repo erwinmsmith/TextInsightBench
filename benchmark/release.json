@@ -33,7 +33,7 @@
     "compound_association": 15
   },
   "fixed_reference_conclusions": 0,
-  "scoring_version": "finding-quality-discovery",
+  "scoring_version": "finding-quality-discovery-evidence",
   "split_policy": "Disjoint task IDs and remaining curated learning pool; inherited normalized/template deduplication.",
   "historical_exposure": "Task documents were drawn from a previously public learning pool. Not an unseen or independent validation set."
 }

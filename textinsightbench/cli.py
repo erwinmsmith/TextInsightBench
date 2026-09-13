@@ -15,6 +15,7 @@ from .evaluation import score, aggregate, DIMENSIONS
 from .difficulty import apply_profile, audit, scoring_version, HARD_JUDGE_INSTRUCTIONS, PROFILES
 from .discovery import is_discovery, JUDGE_INSTRUCTIONS
 from .semantic_audit import packet as audit_packet
+from . import evidence_check
 
 
 def actual_difficulty(root, requested='standard'):
@@ -184,6 +185,7 @@ def judge(args):
     if difficulty == 'discovery':
         judge_config['audit_documents'] = getattr(args,'audit_documents',160)
         judge_config['audit_seed'] = read(config_path)['audit_seed'] if config_path.exists() else secrets.token_hex(32)
+        judge_config['evidence_protocol_sha256'] = digest(evidence_check.PROTOCOL)
     if config_path.exists():
         if read(config_path) != judge_config:
             raise ValueError('Judge configuration changed; choose a new review directory')
@@ -212,16 +214,32 @@ def judge(args):
                 payload = audit_packet(task,rows,sub,judge_config['audit_seed'],judge_config['audit_documents'])
             if difficulty in ('hard','discovery'):
                 payload['robustness_audits'] = {f['finding_id']: audit(f, task, rows)[1] for f in sub['findings']}
+            blind=None;blind_receipts=[]
+            if difficulty == 'discovery':
+                blind_path=output/(tid+'.blind.json')
+                blind_binding={'task_sha256':digest(task),'submission_sha256':digest(sub),
+                               'corpus_sha256':task['corpus_sha256'],'judge_config_sha256':digest(judge_config)}
+                if blind_path.exists():
+                    cached=read(blind_path)
+                    if cached['binding']!=blind_binding:raise ValueError('Cached evidence check binding mismatch')
+                    blind,blind_receipts=cached['check'],cached['receipts']
+                else:
+                    blind,blind_receipts=evidence_check.run(payload,judge_config['audit_seed'],judge_config['audit_documents'],
+                        lambda prompt,inputs:request_json(args,prompt,inputs))
+                    write(blind_path,{'binding':blind_binding,'check':blind,'receipts':blind_receipts})
+                payload['blind_evidence_diagnostics']=evidence_check.compare(task,rows,sub,blind)
+                payload['blind_annotations']=blind['annotations']
             quality, q_receipt = request_json(args, system, payload)
             if set(quality) != {'findings'} or any(r.get('reference_match') is not None for r in quality['findings']):
                 raise ValueError('Quality stage must not assign reference matches')
             review = {'task_id': tid, 'submission_sha256': digest(sub), 'corpus_sha256': task['corpus_sha256'],
                 'reference_sha256': ref_sha, 'scoring_version': scoring_version(task),
                 'reviewer_method': args.base_url + ' / ' + args.model,
-                'findings': quality['findings'], 'provider_receipts': [q_receipt]}
+                'findings': quality['findings'], 'provider_receipts': blind_receipts+[q_receipt]}
             if difficulty in ('hard','discovery'):
                 review['task_sha256'] = digest(task)
             if difficulty == 'discovery':
+                review['blind_check']=blind
                 review['semantic_audit'] = {**payload['semantic_audit'],
                     'document_ids':[r['doc_id'] for r in payload['documents']]}
             # Validate before invoking the separate reference matching stage.
@@ -298,7 +316,7 @@ def evaluate(args):
     report['run'] = read(run_path) if run_path.exists() else None
     write(args.output, report)
     markdown = '# TextInsightBench evaluation\n\n'
-    markdown += 'Version: ' + refs['benchmark_version'] + '\n\n'
+    markdown += 'Tasks SHA-256: ' + report['tasks_sha256'] + '\n\n'
     markdown += 'Difficulty: ' + difficulty + '\n\n'
     markdown += '| Metric | Value |\n|---|---:|\n'
     for key in ('tasks', 'scored_tasks', 'quality_mean', 'conditional_quality_mean', 'reference_coverage_mean', 'valid_submission_rate', 'abstention_rate', 'pending_tasks', 'missing_tasks', 'invalid_tasks'):

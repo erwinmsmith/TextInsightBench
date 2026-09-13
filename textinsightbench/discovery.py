@@ -115,4 +115,10 @@ corpus semantic correctness merely from absence of errors in the sample. Unseen
 documents and a narrow selection cannot be used to support broad prevalence claims.
 Analytical depth requires a substantive discovered relation and a supported account
 of competing explanations, not a long description or a checklist of computed numbers.
+Inspect blind_evidence_diagnostics and blind_annotations before interpreting the
+participant narrative. This checker did not see the claim or submitted labels.
+Its disagreements are fallible model diagnostics, but material contradictions
+cannot be dismissed because a participant's arithmetic or prose is polished.
+An evidence gate can reduce support or leave it unresolved; narrative grading
+cannot override the gate. Never treat label agreement as independently proven truth.
 '''
