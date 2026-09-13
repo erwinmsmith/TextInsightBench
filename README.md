@@ -2,71 +2,66 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-TextInsightBench evaluates natural-language data-mining agents through **50 open exploration tasks**. Agents must discover a useful pattern, choose a defensible population and comparison, quantify it, find counterexamples, and explain competing interpretations. Any analysis method is allowed.
+A natural-language data-mining benchmark for agents. Explore a corpus, discover a substantive pattern, quantify it, and test whether the evidence supports the conclusion. Any analysis method is allowed.
 
-The current benchmark contains **435,000 task documents** and **944,468 unlabeled learning documents**. Each task has 5,000 or 10,000 documents and accepts at most three nonredundant findings. The task does not supply the condition, comparison groups or time boundary.
+**50 tasks · 435,000 task documents · 944,468 unlabeled learning documents**
 
-## Resources
+Each task provides 5,000 or 10,000 texts and a research objective—not the pattern to find. Agents choose their analytical conditions, populations and comparisons, then submit up to three nonredundant findings with document assignments, quotations, statistics, counterexamples and limitations.
 
-| Resource | Public repository |
+## Start here
+
+| Resource | Contents |
 |---|---|
-| Runner, scoring and instructions | [GitHub](https://github.com/erwinmsmith/TextInsightBench) |
-| Task corpora and unlabeled pool | [Participant dataset](https://huggingface.co/datasets/CodeSoulco/TextInsightBench) |
-| Evaluation protocol and reference availability | [Evaluation assets](https://huggingface.co/datasets/CodeSoulco/TextInsightBench-Evaluation) |
+| [Participant data](https://huggingface.co/datasets/CodeSoulco/TextInsightBench) | Task questions, task corpora, optional unlabeled learning pool and output schema |
+| [Evaluation assets](https://huggingface.co/datasets/CodeSoulco/TextInsightBench-Evaluation) | Public scoring documentation and reference-availability records |
+| [Usage guide](docs/USAGE.md) | Download, connect an agent, resume runs and generate reports |
+| [Experimental results](docs/RESULTS.md) | Three open-source agents across all 50 tasks, with coverage and limitations |
 
-All three repositories are public. The benchmark name stays TextInsightBench; commit hashes identify exact snapshots. Old scores are not comparable with the current task inventory.
+All repositories are public. Save the code commit and the dataset commits in [data.lock.json](benchmark/data.lock.json) to identify an exact snapshot.
 
 ## Quick start
+
+Python 3.10 or newer:
 
 ```bash
 git clone https://github.com/erwinmsmith/TextInsightBench.git
 cd TextInsightBench
 python -m venv .venv
 source .venv/bin/activate
-pip install -e '.[data]'
+pip install -e .
 
-# Public downloads; add --with-learning when using the learning pool.
+# Downloads all task corpora. No account or model key is required.
 tib download --output data/participant
 tib verify --data data/participant
 
-# Interface smoke test only: always abstains, no model API calls.
+# Interface test: abstains on all 50 tasks, with no model requests.
 tib run --data data/participant --command 'python examples/abstain_agent.py' \
   --output runs/smoke/submissions
 tib evaluate --data data/participant --submissions runs/smoke/submissions \
   --output runs/smoke/report.json
 ```
 
-The full exploration challenge is the default. Do not add a difficulty flag. The legacy flags only support historical task snapshots.
+This smoke test checks the interface, not mining ability. The report contains 50 abstentions and no quality score.
 
-## Connect an agent
+## Run your agent
 
-A fresh process receives one JSON object on stdin and returns a submission JSON object on stdout. Logs belong on stderr. The input provides a local corpus file, not thousands of inline documents:
-
-```json
-{
-  "task": {"task_id": "...", "question": "...", "kind": "group_difference"},
-  "corpus": {"path": "/absolute/path/corpus.jsonl.gz", "format": "jsonl.gz", "n_documents": 10000, "sha256": "..."},
-  "learning_directory": null
-}
-```
-
-The actual task contains the full constraints. Your agent may read, search, index, cluster, sample and revisit the file using its own tools. It must ultimately classify every document in each declared analysis population; a few retrieved quotes are not a population estimate.
+The runner starts a fresh process for each task. It sends one JSON object through stdin with the full task, an absolute gzip-JSONL corpus path and an optional learning directory. Return one submission JSON object on stdout; send logs to stderr. Your agent controls how it explores and models the corpus.
 
 ```bash
 tib run --data data/participant --command 'python my_agent.py' \
   --timeout 3600 --output runs/my-agent/submissions
 ```
 
-For the learning track, download with `--with-learning` and run with `--track unlabeled_pool`. Freeze global prompts, learned parameters and thresholds before the run; corpus-local exploration is allowed. The runner is not a security sandbox. See [agent protocol](docs/AGENT_PROTOCOL.md) and [submission contract](docs/SUBMISSIONS.md).
+Choose either `task_only` (default) or `unlabeled_pool`. For the latter, download with `--with-learning` and run with `--track unlabeled_pool`. Freeze global prompts, learned parameters and thresholds before evaluation. Corpus-local exploration is allowed; transferring evaluation feedback between tasks is not.
 
-## Evaluate
+See the [usage guide](docs/USAGE.md), [agent interface](docs/AGENT_PROTOCOL.md) and [submission contract](docs/SUBMISSIONS.md). The runner is **not a security sandbox**.
 
-Structural checks recompute all selected-population counts, contrasts, missingness bounds, stratified comparisons and concentration diagnostics. Exact quotation offsets and complete assignment partitions are checked locally.
+## Score submissions
 
-Semantic quality is assessed separately by a configured JSON-capable chat-completions service:
+Configure a JSON-capable chat-completions service locally. Keep credentials out of Git.
 
 ```bash
-# Set JUDGE_API_KEY, JUDGE_BASE_URL and JUDGE_MODEL locally.
+# Export JUDGE_API_KEY, JUDGE_BASE_URL and JUDGE_MODEL in your shell.
 tib judge --data data/participant --submissions runs/my-agent/submissions \
   --base-url "$JUDGE_BASE_URL" --model "$JUDGE_MODEL" \
   --audit-documents 160 --output runs/my-agent/reviews
@@ -74,17 +69,25 @@ tib evaluate --data data/participant --submissions runs/my-agent/submissions \
   --reviews runs/my-agent/reviews --output runs/my-agent/report.json
 ```
 
-Judging makes paid requests, one per nonempty submission. It inspects a reproducible, assignment-stratified and corpus-wide sample plus the submitted quotations. **Arithmetic is exhaustive; semantic inspection is sampled.** This is neither full-corpus semantic verification nor an independent validation phase. Insufficient evidence must remain unresolved.
+Local checks verify complete assignment partitions, exact quotations and recomputed statistics. Paid model review checks sampled original documents without seeing the agent's claims or labels, then grades the finding. Evidence disagreement caps the score; unresolved evidence stays unscored.
 
-Quality is `support × (15 + 25S + 20E + 30D + 10C)`: statistical validity, evidence entailment, substantive analytical depth, and calibration. Unfulfilled tasks and duplicates receive zero. Report quality alongside scored coverage, abstention, missing and invalid rates; a conditional mean alone is not a full-benchmark score.
+Finding quality is `support × (15 + 25S + 20E + 30D + 10C)`, where S is statistical validity, E evidence entailment, D analytical depth and C calibration. Report scores **together with coverage, unresolved, invalid, missing and abstention counts**. See [scoring](docs/SCORING.md).
 
-## Reference status and limitations
+## Observed results
 
-The redesigned tasks do **not** have 50 newly annotated fixed answers. Earlier reference conclusions belong to earlier, narrow task definitions and remain recoverable in repository history; they are not relabeled as answers to these exploration tasks. Current evaluation assets explicitly record zero fixed reference conclusions. Reference coverage is unavailable, not zero; supported novel findings are scored from evidence and the public rubric.
+The completed development experiment contains **150 runs: three open-source agents × 50 tasks**. Of these, 86 produced valid submissions, 70 received numerical scores, 16 remained evidence-unresolved and 64 produced no valid submission. Scored-only means range from 11.95 to 19.57 out of 100.
 
-This release adds no independent validation set. Task documents were drawn from a previously public learning pool, so they are not guaranteed unseen. Current task corpora and remaining learning documents have disjoint IDs and inherit the curated pool's text/template deduplication; shared entities and sources remain. The task briefs are distinct research objectives, not evidence of 50 statistically independent questions. No empirical agent-difficulty claim is made without an actual agent comparison.
+These are mixed-configuration development results, **not a controlled leaderboard**. See [per-agent results, settings and limitations](docs/RESULTS.md).
 
-See [data composition](docs/DATA.md), [challenge and formulas](docs/DIFFICULTY.md), [scoring](docs/SCORING.md), [organizer operations](docs/ORGANIZER.md), [verification](docs/VERIFICATION.md), and [source terms](docs/SOURCES.md).
+## Data and evaluation scope
+
+Sources are Amazon Beauty reviews, Android App Reviews, CFPB complaints and NHTSA complaints. Tasks cover 20 group differences, 15 temporal changes and 15 compound associations. The optional learning pool is unlabeled.
+
+There are **no fixed reference conclusions** for these open-discovery tasks. The evaluation repository records reference availability, not 50 annotated answers. Quality is judged against corpus evidence and the public rubric; reference coverage is unavailable.
+
+Arithmetic checks are exhaustive; semantic review is sampled and fallible. The data was previously public and is not an unseen holdout. Task and learning document IDs are disjoint, but shared entities and sources mean tasks are not statistically independent.
+
+[Data composition](docs/DATA.md) · [Challenge requirements](docs/DIFFICULTY.md) · [Evaluation operations](docs/ORGANIZER.md) · [Verification](docs/VERIFICATION.md) · [Source terms](docs/SOURCES.md)
 
 ```bash
 python -m unittest discover -s tests -v

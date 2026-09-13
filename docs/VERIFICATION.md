@@ -8,7 +8,8 @@ Synthetic tests exercise agent-selected group/date comparisons, forbidden
 filters, overlapping groups, minimum population sizes, exact partitions,
 Simpson-style reversals, missing metadata, counterexamples, quotation offsets,
 score bindings, null reference coverage and bounded reproducible semantic packets.
-No paid agent benchmark or independent validation set was added.
+The separate [agent experiment](RESULTS.md) covers 150 completed attempts.
+It is not an independent validation set or a controlled leaderboard.
 
 ```bash
 python -m unittest discover -s tests -v
@@ -19,5 +20,5 @@ The data builder deterministically selects disjoint IDs from an already curated
 pool, preserves original text, enriches released metadata and filters selected
 documents out of the remaining pool. It records exact input shard hashes.
 Current-snapshot disjointness does not erase historical public exposure.
-The design increases the required exploration and analysis workload; actual
-difficulty and discriminative power still require empirical agent results.
+Observed completion and quality results are reported separately from these
+software checks; they do not establish difficulty under matched conditions.

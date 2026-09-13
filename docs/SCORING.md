@@ -1,6 +1,6 @@
 # Scoring
 
-The current scoring protocol is finding-quality-discovery. Commit-pinned current
+The current scoring protocol is finding-quality-discovery-evidence. Commit-pinned current
 scores must not be compared directly with historical narrow-task scores.
 
 ## Local gates
@@ -49,6 +49,38 @@ uncertain when the packet cannot resolve a claim. No full-corpus semantic
 guarantee or unbiased estimator of label accuracy is claimed. Report judge
 model, input budget and audit size; model-based scores have evaluator error.
 
+Before narrative grading, a separate claim-blind pass reannotates the sampled
+documents in batches of at most 12 documents / 24,000 characters (a single long
+document is retained whole). It receives only condition definitions and original
+text, never participant claims, labels, statistics or task questions. Exact
+positive quotes and complete output coverage are checked. An invalid response
+permits one format/quote repair; unresolved protocol errors stop the review.
+
+The persisted blind check is bound to its prompt/protocol and the exact sampled
+documents. At evaluation time, agreement diagnostics are recomputed from the
+original submission and corpus. The following fixed gates cap semantic support:
+
+- Unsupported: at least 5 sampled claimed positives and at least half are judged
+  negative, or every supplied supporting document is contradicted by the checker.
+- Uncertain: over 20% checker-unknown within any condition's sampled population,
+  no checked population, or fewer than 3 supporting documents confirmed positive
+  for all required conditions (unless the unsupported gate already applies).
+- Partial: more than 10% disagreement among at least 20 jointly known sampled
+  assignments, or over 15% positive contradictions among at least 8 sampled
+  claimed positives.
+- Otherwise, the check allows supported quality but does not itself award it.
+
+The more restrictive support category is used, with unsupported taking priority
+over uncertain and partial. Narrative grading cannot override these caps. Reports
+retain the narrative support, effective_support and evidence_gate diagnostics.
+These are conservative operational thresholds, not validated population-error
+estimates. Sample construction is not uniform, checker judgments remain fallible,
+and agreement with a model does not create independently certified ground truth.
+
+A live synthetic regression check preserved full credit for a supported composition
+reversal and rejected a submission labeling explicit negative texts as positive.
+This is an evaluator sanity check, not a benchmark agent-performance score.
+
 ## Aggregation and reference availability
 
 Task quality averages all submitted finding scores; any unresolved finding makes
@@ -58,8 +90,7 @@ task has a score. conditional_quality_mean covers only scored tasks and must be
 reported alongside scored_tasks, abstention_rate, valid_submission_rate, missing,
 invalid and pending counts. Source and family breakdowns are included.
 
-Current redesigned tasks have no fixed reference conclusions. reference_coverage
-is null. Earlier 50 conclusions are retained only in history, not reused against
-new questions. Novel supported findings are not penalized for lacking a fixed
+Current tasks have no fixed reference conclusions. reference_coverage is null.
+Novel supported findings are not penalized for lacking a fixed
 match. Reviews bind task, corpus, submission, reference configuration and scoring
 hashes; stale reviews must not be reused.

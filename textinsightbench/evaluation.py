@@ -23,6 +23,10 @@ def score(sub, task, rows, reference, review, reference_sha256):
     if len(findings) != len(ids) or {r['finding_id'] for r in findings} != set(ids):
         raise ValueError('Assess every submitted finding exactly once')
     by_id = {r['finding_id']: r for r in findings}
+    gates={}
+    if task.get('difficulty')=='discovery' and ids:
+        from .evidence_check import compare
+        gates=compare(task,rows,sub,review['blind_check'])
     out, earlier, matched = [], set(), set()
     for fid in ids:
         r = by_id[fid]
@@ -40,7 +44,11 @@ def score(sub, task, rows, reference, review, reference_sha256):
         if r['reference_match'] not in (None, reference['reference_id']):
             raise ValueError('Unknown reference match')
         earlier.add(fid)
-        factor = {'supported': 1, 'partial': 0.5, 'unsupported': 0, 'uncertain': None}[r['support']]
+        effective=r['support']
+        if fid in gates:
+            from .evidence_check import capped
+            effective=capped(effective,gates[fid]['support_cap'])
+        factor = {'supported': 1, 'partial': 0.5, 'unsupported': 0, 'uncertain': None}[effective]
         if not r['task_fulfilled'] or r['duplicate_of'] is not None:
             value = 0.0
         elif factor is None:
@@ -50,7 +58,8 @@ def score(sub, task, rows, reference, review, reference_sha256):
             value = factor * (base + 25*r['statistical_validity'] + 20*r['evidence_entailment'] + depth*r['analytical_depth'] + 10*r['calibration'])
         if r['reference_match'] and factor == 1 and r['task_fulfilled'] and r['duplicate_of'] is None:
             matched.add(r['reference_match'])
-        out.append({'finding_id': fid, 'score': value, **r})
+        out.append({'finding_id': fid, 'score': value, **r, 'effective_support':effective,
+                    **({'evidence_gate':gates[fid]} if fid in gates else {})})
     quality = sum(r['score'] for r in out)/len(out) if out and all(r['score'] is not None for r in out) else None
     status = 'abstained' if not out else 'unresolved' if quality is None else 'scored'
     return {**binding, 'status': status, 'findings': out, 'quality': quality,
