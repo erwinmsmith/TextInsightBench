@@ -36,7 +36,7 @@ def publish(args):
     for key,folder,repo_id,parent,obsolete in plans:
         commit=api.upload_folder(repo_id=repo_id,repo_type='dataset',folder_path=folder,
             ignore_patterns=['.cache/**'],delete_patterns=obsolete,parent_commit=parent,
-            commit_message='Sync benchmark documentation, evaluation protocol and results')
+            commit_message='Sync benchmark documentation and evaluation protocol')
         lock[key]['revision']=commit.oid
         print(json.dumps({'repo_id':repo_id,'revision':commit.oid}),flush=True)
     lock_path.write_text(json.dumps(lock,indent=2)+'\n')
